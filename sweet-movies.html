@@ -47,6 +47,15 @@
       .search:focus-within{border-color:#fff}
       .list-count{background:var(--accent);color:#fff;border-radius:999px;font-size:.78rem;
         padding:.05rem .45rem;font-family:'Barlow';font-weight:700}
+      .icon-btn{background:rgba(0,0,0,.85);border:1px solid #333;color:#e5e5e5;border-radius:4px;
+        width:2.4rem;height:2.4rem;font-size:1.15rem;display:grid;place-items:center;flex:none}
+      .icon-btn:hover{border-color:#fff}
+      .key-input{width:100%;background:#000;border:1px solid var(--line);color:var(--text);
+        border-radius:4px;padding:.65rem .8rem;font-family:inherit;font-size:1rem;margin:.4rem 0 .7rem}
+      .key-input:focus{outline:0;border-color:var(--accent)}
+      .set-note{color:var(--muted);font-size:.93rem;line-height:1.6}
+      .set-note a{color:var(--accent2);font-weight:700;text-decoration:none}
+      .set-note a:hover{text-decoration:underline}
 
       /* ---------- hero ---------- */
       .hero{position:relative;min-height:min(88vh,640px);display:flex;align-items:flex-end;
@@ -228,6 +237,7 @@
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#a7b0c2" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
           <input id="q" type="search" placeholder="মুভি খুঁজুন… যেমন Inception" aria-label="মুভি খুঁজুন" />
         </label>
+        <button class="icon-btn" type="button" id="settingsBtn" aria-label="সেটিংস — TMDB API" title="সেটিংস — TMDB API">⚙️</button>
       </div>
     </header>
 
@@ -277,7 +287,7 @@
         <span class="dot" id="apiDot"></span>
         <span id="apiStatus"><b>লাইভ API</b> — ওপেন-সোর্স API থেকে মুভি আসছে…</span>
         <span class="sp"></span>
-        <span>সোর্স: <a href="https://github.com/theapache64/top250" target="_blank" rel="noopener">GitHub · Top 250</a> · <a href="https://github.com/janaipakos/ghibliapi" target="_blank" rel="noopener">GitHub · Ghibli API</a> · <a href="https://github.com/vega/vega-datasets" target="_blank" rel="noopener">GitHub · Vega Movies</a></span>
+        <span>সোর্স: <a href="https://github.com/theapache64/top250" target="_blank" rel="noopener">GitHub · Top 250</a> · <a href="https://github.com/janaipakos/ghibliapi" target="_blank" rel="noopener">GitHub · Ghibli API</a> · <a href="https://github.com/vega/vega-datasets" target="_blank" rel="noopener">GitHub · Vega Movies</a> · <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">TMDB</a></span>
         <button class="api-refresh" type="button" id="apiRefresh">↻ API রিফ্রেশ</button>
       </div>
     </div>
@@ -287,7 +297,7 @@
     <footer class="site">
       <div class="foot-in">
         <span class="brand">SWEET<b style="color:var(--accent2)">MOVIES</b></span>
-        <span>লাইভ ডেটা ওপেন-সোর্স API থেকে — <a href="https://github.com/theapache64/top250" target="_blank" rel="noopener" style="color:var(--accent2)">GitHub Top 250</a> ও <a href="https://github.com/janaipakos/ghibliapi" target="_blank" rel="noopener" style="color:var(--accent2)">Ghibli API</a> ও <a href="https://github.com/vega/vega-datasets" target="_blank" rel="noopener" style="color:var(--accent2)">Vega Movies</a> • সব ট্রেইলার YouTube-এ অফিসিয়াল চ্যানেলের এমবেড</span>
+        <span>লাইভ ডেটা ওপেন-সোর্স API থেকে — <a href="https://github.com/theapache64/top250" target="_blank" rel="noopener" style="color:var(--accent2)">GitHub Top 250</a> ও <a href="https://github.com/janaipakos/ghibliapi" target="_blank" rel="noopener" style="color:var(--accent2)">Ghibli API</a> ও <a href="https://github.com/vega/vega-datasets" target="_blank" rel="noopener" style="color:var(--accent2)">Vega Movies</a> ও <a href="https://www.themoviedb.org/" target="_blank" rel="noopener" style="color:var(--accent2)">TMDB</a> • সব ট্রেইলার YouTube-এ অফিসিয়াল চ্যানেলের এমবেড</span>
         <span>মাই লিস্ট ও Continue Watching এই সেশনেই থাকে — পেজ রিফ্রেশ হলে মুছে যাবে।</span>
       </div>
     </footer>
@@ -312,6 +322,24 @@
             <a id="trailerYt" href="#" target="_blank" rel="noopener">YouTube-এ খুলুন ↗</a>
             <button class="btn btn-ghost" type="button" id="trailerClose" style="padding:.4rem 1rem">বন্ধ করুন</button>
           </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scrim" id="settingsScrim" role="dialog" aria-modal="true" aria-label="সেটিংস">
+      <div class="modal" style="max-width:560px">
+        <div class="modal-body" style="padding:1.4rem clamp(1rem,3vw,1.8rem) 1.6rem">
+          <h2 class="disp" style="margin:.2rem 0 .6rem;font-size:1.5rem">সেটিংস — TMDB API</h2>
+          <p class="set-note">TMDB key বসালে প্রতিদিন নতুন মুভি আসবে — <b>Trending This Week</b> আর <b>Now Playing</b> রো দুইটা TMDB থেকে ফ্রেশ লোড হবে। Key ছাড়া বিল্ট-ইন + ওপেন-সোর্স ক্যাটালগই চলবে।</p>
+          <label for="tmdbKeyInput" style="font-weight:700">TMDB API Key / Read Access Token</label>
+          <input id="tmdbKeyInput" class="key-input" type="password" placeholder="এখানে key পেস্ট করুন" autocomplete="off" />
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+            <button class="btn btn-red" type="button" id="tmdbKeySave">সংরক্ষণ করুন</button>
+            <button class="btn btn-ghost" type="button" id="tmdbKeyClear">Key মুছুন</button>
+            <button class="btn btn-ghost" type="button" id="settingsClose">বন্ধ করুন</button>
+          </div>
+          <p id="tmdbKeyStatus" class="set-note" style="margin-top:.8rem"></p>
+          <p class="set-note">Key পেতে: <a href="https://www.themoviedb.org/settings/api" target="_blank" rel="noopener">themoviedb.org → Settings → API</a> — ফ্রি অ্যাকাউন্ট খুলে <b>v4 Read Access Token</b> বা <b>v3 API Key</b> কপি করুন। Key শুধু এই ব্রাউজারেই থাকে (localStorage) — কোথাও পাঠানো হয় না, GitHub রিপোতেও যায় না।</p>
         </div>
       </div>
     </div>
@@ -476,7 +504,7 @@
       continueList.forEach(function(c){
         var m = byId[c.id];
         html += '<button type="button" class="card cw-card" data-trailer="'+m.id+'" aria-label="'+esc(m.t)+' ট্রেইলার আবার দেখুন">'
-          + '<div class="poster"><img src="assets/posters/'+m.id+'.jpg" alt="'+esc(m.t)+' পোস্টার" style="object-position:center 25%" />'
+          + '<div class="poster"><img src="'+(m.img ? esc(m.img) : 'assets/posters/'+m.id+'.jpg')+'" alt="'+esc(m.t)+' পোস্টার" style="object-position:center 25%" />'
           + '<span class="play" style="opacity:1"><span class="disc"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M7 4.5v15l13-7.5z"/></svg></span></span></div>'
           + '<h3>'+esc(m.t)+'</h3><span class="bar"><i style="width:'+c.pct+'%"></i></span></button>';
       });
@@ -551,6 +579,8 @@
       var top = MOVIES.slice().sort(function(a,b){return b.r-a.r;}).slice(0,10);
       var popular = sorted(MOVIES.filter(function(m){return m.pop>=85 && m.pop<97;}));
       html = cwSection()
+        + (tmdbTrending.length ? railSection("Trending This Week", "TMDB — এই সপ্তাহের ট্রেন্ডিং", tmdbTrending) : "")
+        + (tmdbNowPlaying.length ? railSection("Now Playing", "TMDB — এখন সিনেমা হলে", tmdbNowPlaying) : "")
         + railSection("Trending Now", "সবাই যা দেখছে", trending)
         + railSection("Top Rated", "সর্বোচ্চ রেটিং", top)
         + railSection("Popular on Sweet Movies", "", popular)
@@ -567,6 +597,7 @@
     var detailModal = document.getElementById("detailModal");
     function openDetail(id){
       var m = byId[id]; if(!m) return;
+      enrichTmdb(m);
       var inList = myList.has(m.id);
       var like = MOVIES.filter(function(x){ return x.id!==m.id && x.g.some(function(g){return m.g.indexOf(g)>=0;}); })
         .sort(function(a,b){return b.r-a.r;}).slice(0,6);
@@ -575,7 +606,7 @@
         + '<button class="x" type="button" data-close aria-label="বন্ধ করুন">✕</button>'
         + '<div class="mh-in"><h2>'+esc(m.t)+'</h2>'
         + '<div style="display:flex;gap:.6rem;flex-wrap:wrap">'
-        + (m.yt ? '<button class="btn btn-red" type="button" data-trailer="'+m.id+'">▶ ট্রেইলার</button>' : "")
+        + ((m.yt || m.tmdb) ? '<button class="btn btn-red" type="button" data-trailer="'+m.id+'">▶ ট্রেইলার</button>' : "")
         + '<button class="btn btn-ghost'+(inList?" added":"")+'" type="button" data-list="'+m.id+'">'+(inList?"✓ লিস্টে আছে":"＋ মাই লিস্ট")+'</button>'
         + '</div></div></div>'
         + '<div class="modal-body">'
@@ -609,6 +640,14 @@
     var trailerStarted = 0, trailerMovie = null;
     function openTrailer(id){
       var m = byId[id]; if(!m) return;
+      if(!m.yt && m.tmdb){
+        toast("ট্রেইলার খুঁজছি…");
+        fetchTmdbTrailer(m, function(key){
+          if(key) openTrailer(id);
+          else toast("এই মুভির অফিসিয়াল ট্রেইলার পাওয়া যায়নি");
+        });
+        return;
+      }
       if(!m.yt){ toast("এই টাইটেলের অফিসিয়াল ট্রেইলার লিংক API ডেটায় নেই"); return; }
       trailerMovie = m; trailerStarted = Date.now();
       document.getElementById("trailerTitle").textContent = m.t + " — Official Trailer";
@@ -668,7 +707,7 @@
     trailerScrim.addEventListener("click", function(e){ if(e.target===trailerScrim) closeTrailer(); });
     document.getElementById("trailerClose").addEventListener("click", closeTrailer);
     document.addEventListener("keydown", function(e){
-      if(e.key==="Escape"){ closeTrailer(); closeDetail(); }
+      if(e.key==="Escape"){ closeTrailer(); closeDetail(); closeSettings(); }
     });
     document.getElementById("brandHome").addEventListener("click", function(e){
       e.preventDefault(); tab="home"; query=""; document.getElementById("q").value="";
@@ -701,6 +740,98 @@
     var apiRefresh = document.getElementById("apiRefresh");
     var apiLoaded = false;
 
+    /* ---------- TMDB (daily fresh movies) ---------- */
+    var TMDB_KEY_LS = "sweetmovies_tmdb_key";
+    var tmdbTrending = [], tmdbNowPlaying = [];
+    var TMDB_GENRES = {28:"Action",12:"Adventure",16:"Animation",35:"Comedy",80:"Crime",99:"Documentary",18:"Drama",10751:"Family",14:"Fantasy",36:"History",27:"Horror",10402:"Music",9648:"Mystery",10749:"Romance",878:"Sci-Fi",10770:"TV Movie",53:"Thriller",10752:"War",37:"Western"};
+    var TMDB_LANGS = {en:"English", bn:"বাংলা", hi:"Hindi", ko:"Korean", ja:"Japanese"};
+    function tmdbKey(){ try{ return (localStorage.getItem(TMDB_KEY_LS)||"").trim(); }catch(e){ return ""; } }
+    function tmdbFetch(path){
+      var key = tmdbKey();
+      var url = "https://api.themoviedb.org/3" + path + (path.indexOf("?")>=0 ? "&" : "?");
+      var opts = {};
+      if(key.indexOf("eyJ")===0){ opts.headers = {Authorization:"Bearer "+key}; }
+      else { url += "api_key="+encodeURIComponent(key); }
+      return Promise.race([
+        fetch(url, opts).then(function(r){ if(!r.ok) throw new Error("tmdb:"+r.status); return r.json(); }),
+        new Promise(function(_, rej){ setTimeout(function(){ rej(new Error("timeout")); }, 12000); })
+      ]);
+    }
+    function tmdbNorm(x, pop){
+      var yr = parseInt(String(x.release_date||"").slice(0,4), 10) || 0;
+      var gs = (x.genre_ids||[]).map(function(id){ return TMDB_GENRES[id]; }).filter(Boolean).slice(0,3);
+      return {
+        id:"tmdb-"+x.id, tmdb:1, tmdbId:x.id, t:x.title||x.name||"—", y:yr,
+        r:Math.round((x.vote_average||0)*10)/10, dur:"—",
+        lang:TMDB_LANGS[x.original_language] || (x.original_language||"—").toUpperCase(),
+        g:gs.length?gs:["Drama"], dir:"—", cast:"—", pop:pop,
+        yt:null, img:x.poster_path ? "https://image.tmdb.org/t/p/w500"+x.poster_path : null,
+        src:"TMDB (The Movie Database)",
+        s:x.overview || "এই মুভির বিবরণ TMDB-তে পাওয়া যায়নি।"
+      };
+    }
+    var tmdbStatus = ""; // "ok" | "bad" | ""
+    function loadTmdb(known){
+      var key = tmdbKey();
+      if(!key) return Promise.resolve(0);
+      var trend = tmdbFetch("/trending/movie/week?language=en-US&page=1").catch(function(){ return null; });
+      var now = tmdbFetch("/movie/now_playing?language=en-US&page=1").catch(function(){ return null; });
+      return Promise.all([trend, now]).then(function(res){
+        var t = res[0], n = res[1];
+        if(!t && !n){ tmdbStatus = "bad"; return 0; }
+        tmdbStatus = "ok";
+        var added = 0;
+        tmdbTrending = []; tmdbNowPlaying = [];
+        (t && t.results || []).slice(0,20).forEach(function(x, i){
+          var title = (x.title||"").toLowerCase();
+          if(!x.title || known[title]) return;
+          known[title] = 1;
+          var m = tmdbNorm(x, Math.max(60, 99-i));
+          tmdbTrending.push(m); MOVIES.push(m); added++;
+        });
+        (n && n.results || []).slice(0,20).forEach(function(x, i){
+          var title = (x.title||"").toLowerCase();
+          if(!x.title || known[title]) return;
+          known[title] = 1;
+          var m = tmdbNorm(x, Math.max(55, 88-i));
+          tmdbNowPlaying.push(m); MOVIES.push(m); added++;
+        });
+        return added;
+      });
+    }
+    function enrichTmdb(m){
+      if(!m.tmdb || m._enriched) return;
+      m._enriched = 1;
+      var det = tmdbFetch("/movie/"+m.tmdbId+"?language=en-US").catch(function(){ return null; });
+      var cred = tmdbFetch("/movie/"+m.tmdbId+"/credits?language=en-US").catch(function(){ return null; });
+      Promise.all([det, cred]).then(function(res){
+        var d = res[0], c = res[1];
+        if(d){
+          if(d.runtime) m.dur = fmtMins(d.runtime);
+          if(d.overview) m.s = d.overview;
+          if(d.genres && d.genres.length) m.g = d.genres.map(function(g){ return g.name; }).slice(0,3);
+        }
+        if(c){
+          var dir = (c.crew||[]).filter(function(p){ return p.job==="Director"; });
+          if(dir.length) m.dir = dir.map(function(p){ return p.name; }).join(", ");
+          var cast = (c.cast||[]).slice(0,5).map(function(p){ return p.name; });
+          if(cast.length) m.cast = cast.join(", ");
+        }
+        if(detailScrim.classList.contains("open")) openDetail(m.id);
+      });
+    }
+    function fetchTmdbTrailer(m, done){
+      if(m.yt){ done(m.yt); return; }
+      if(!m.tmdb || !tmdbKey()){ done(null); return; }
+      tmdbFetch("/movie/"+m.tmdbId+"/videos?language=en-US").then(function(v){
+        var list = (v && v.results) || [];
+        var tr = list.filter(function(x){ return x.site==="YouTube" && x.type==="Trailer"; })[0]
+          || list.filter(function(x){ return x.site==="YouTube" && x.type==="Teaser"; })[0]
+          || list.filter(function(x){ return x.site==="YouTube"; })[0];
+        if(tr){ m.yt = tr.key; done(tr.key); } else done(null);
+      }).catch(function(){ done(null); });
+    }
+
     function rebuildGenres(){
       var gs = [];
       MOVIES.forEach(function(m){ m.g.forEach(function(g){ if(gs.indexOf(g)<0) gs.push(g); }); });
@@ -721,6 +852,7 @@
     }
     function loadApis(manual){
       MOVIES = MOVIES.filter(function(m){ return !m.src; });
+      tmdbTrending = []; tmdbNowPlaying = []; tmdbStatus = "";
       byId = {};
       MOVIES.forEach(function(m){ byId[m.id]=m; });
       apiRefresh.disabled = true;
@@ -798,24 +930,77 @@
           okSrc.push("Vega Movies");
         }).catch(function(){});
 
-      return Promise.all([p1, p2, p3]).then(function(){
+      var p4 = loadTmdb(known).then(function(n){ if(n>0) okSrc.push("TMDB"); }).catch(function(){});
+
+      return Promise.all([p1, p2, p3, p4]).then(function(){
         MOVIES.forEach(function(m){ byId[m.id]=m; });
         rebuildGenres();
         apiRefresh.disabled = false;
         if(added>0){
           apiLoaded = true;
           apiDot.className = "dot live";
-          apiStatus.innerHTML = "<b>লাইভ API সংযুক্ত</b> — "+esc(okSrc.join(" + "))+" থেকে আরও <b>"+bnNum(added)+"টি</b> টাইটেল যোগ হয়েছে • মোট ক্যাটালগ "+bnNum(MOVIES.length)+"টি";
+          var tmdbNote = tmdbStatus==="ok" ? " • TMDB সংযুক্ত — প্রতিদিন নতুন মুভি আসছে" : "";
+          apiStatus.innerHTML = "<b>লাইভ API সংযুক্ত</b> — "+esc(okSrc.join(" + "))+" থেকে আরও <b>"+bnNum(added)+"টি</b> টাইটেল যোগ হয়েছে • মোট ক্যাটালগ "+bnNum(MOVIES.length)+"টি"+tmdbNote;
           if(manual) toast("API রিফ্রেশ হয়েছে — মোট "+MOVIES.length+"টি টাইটেল");
         } else {
           apiDot.className = "dot err";
           apiStatus.innerHTML = "<b>API পাওয়া যাচ্ছে না</b> — ইন্টারনেট সংযোগ চেক করুন; বিল্ট-ইন ক্যাটালগ চলছেই।";
           if(manual) toast("API পাওয়া যায়নি — বিল্ট-ইন ক্যাটালগ চলছে");
         }
+        if(tmdbKey() && tmdbStatus==="bad"){
+          apiDot.className = "dot err";
+          apiStatus.innerHTML = "<b>TMDB key কাজ করছে না</b> — সেটিংস (⚙️) থেকে key ঠিকমতো বসানো হয়েছে কিনা দেখুন; বাকি ক্যাটালগ চলছে।";
+        }
         render();
       });
     }
     apiRefresh.addEventListener("click", function(){ toast("API আবার লোড হচ্ছে…"); loadApis(true); });
+
+    /* ---------- settings: TMDB key (localStorage only, never sent anywhere) ---------- */
+    var settingsScrim = document.getElementById("settingsScrim");
+    var tmdbKeyInput = document.getElementById("tmdbKeyInput");
+    var tmdbKeyStatus = document.getElementById("tmdbKeyStatus");
+    function openSettings(){
+      tmdbKeyInput.value = tmdbKey();
+      tmdbKeyStatus.textContent = tmdbKey() ? "✓ TMDB key বসানো আছে" : "এখনো key বসানো হয়নি — key ছাড়া বিল্ট-ইন + ওপেন-সোর্স ক্যাটালগই চলবে।";
+      settingsScrim.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeSettings(){
+      settingsScrim.classList.remove("open");
+      if(!detailScrim.classList.contains("open") && !trailerScrim.classList.contains("open")) document.body.style.overflow = "";
+    }
+    document.getElementById("settingsBtn").addEventListener("click", openSettings);
+    settingsScrim.addEventListener("click", function(e){ if(e.target===settingsScrim) closeSettings(); });
+    document.getElementById("settingsClose").addEventListener("click", closeSettings);
+    document.getElementById("tmdbKeyClear").addEventListener("click", function(){
+      try{ localStorage.removeItem(TMDB_KEY_LS); }catch(e){}
+      tmdbKeyInput.value = "";
+      tmdbKeyStatus.textContent = "Key মুছে ফেলা হয়েছে — TMDB বন্ধ, বাকি ক্যাটালগ চলছে।";
+      toast("TMDB key মুছে ফেলা হয়েছে");
+      loadApis(true);
+    });
+    document.getElementById("tmdbKeySave").addEventListener("click", function(){
+      var k = tmdbKeyInput.value.trim();
+      if(!k){ tmdbKeyStatus.textContent = "Key খালি — আগে key পেস্ট করুন।"; return; }
+      tmdbKeyStatus.textContent = "Key যাচাই করা হচ্ছে…";
+      var isV4 = k.indexOf("eyJ")===0;
+      var url = "https://api.themoviedb.org/3/trending/movie/week?language=en-US&page=1"
+        + (isV4 ? "" : "&api_key="+encodeURIComponent(k));
+      var opts = isV4 ? {headers:{Authorization:"Bearer "+k}} : {};
+      Promise.race([
+        fetch(url, opts).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }),
+        new Promise(function(_, rej){ setTimeout(function(){ rej(new Error("timeout")); }, 12000); })
+      ]).then(function(){
+        try{ localStorage.setItem(TMDB_KEY_LS, k); }catch(e){}
+        tmdbKeyStatus.textContent = "✓ TMDB সংযুক্ত — প্রতিদিন নতুন মুভি আসবে।";
+        toast("TMDB সংযুক্ত হয়েছে");
+        closeSettings();
+        loadApis(true);
+      }).catch(function(){
+        tmdbKeyStatus.textContent = "✕ Key কাজ করছে না — v4 Read Access Token বা v3 API Key ঠিকমতো কপি হয়েছে কিনা দেখুন।";
+      });
+    });
 
     render();
     loadApis(false);
