@@ -287,7 +287,7 @@
         <span class="dot" id="apiDot"></span>
         <span id="apiStatus"><b>লাইভ API</b> — ওপেন-সোর্স API থেকে মুভি আসছে…</span>
         <span class="sp"></span>
-        <span>সোর্স: <a href="https://github.com/theapache64/top250" target="_blank" rel="noopener">GitHub · Top 250</a> · <a href="https://github.com/janaipakos/ghibliapi" target="_blank" rel="noopener">GitHub · Ghibli API</a> · <a href="https://github.com/vega/vega-datasets" target="_blank" rel="noopener">GitHub · Vega Movies</a> · <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">TMDB</a></span>
+        <span>সোর্স: <a href="https://github.com/theapache64/top250" target="_blank" rel="noopener">GitHub · Top 250</a> · <a href="https://github.com/janaipakos/ghibliapi" target="_blank" rel="noopener">GitHub · Ghibli API</a> · <a href="https://github.com/vega/vega-datasets" target="_blank" rel="noopener">GitHub · Vega Movies</a> · <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">TMDB</a> · <a href="https://v3-cinemeta.strem.io/" target="_blank" rel="noopener">Cinemeta</a></span>
         <button class="api-refresh" type="button" id="apiRefresh">↻ API রিফ্রেশ</button>
       </div>
     </div>
@@ -297,7 +297,7 @@
     <footer class="site">
       <div class="foot-in">
         <span class="brand">SWEET<b style="color:var(--accent2)">MOVIES</b></span>
-        <span>লাইভ ডেটা ওপেন-সোর্স API থেকে — <a href="https://github.com/theapache64/top250" target="_blank" rel="noopener" style="color:var(--accent2)">GitHub Top 250</a> ও <a href="https://github.com/janaipakos/ghibliapi" target="_blank" rel="noopener" style="color:var(--accent2)">Ghibli API</a> ও <a href="https://github.com/vega/vega-datasets" target="_blank" rel="noopener" style="color:var(--accent2)">Vega Movies</a> ও <a href="https://www.themoviedb.org/" target="_blank" rel="noopener" style="color:var(--accent2)">TMDB</a> • সব ট্রেইলার YouTube-এ অফিসিয়াল চ্যানেলের এমবেড</span>
+        <span>লাইভ ডেটা ওপেন-সোর্স API থেকে — <a href="https://github.com/theapache64/top250" target="_blank" rel="noopener" style="color:var(--accent2)">GitHub Top 250</a> ও <a href="https://github.com/janaipakos/ghibliapi" target="_blank" rel="noopener" style="color:var(--accent2)">Ghibli API</a> ও <a href="https://github.com/vega/vega-datasets" target="_blank" rel="noopener" style="color:var(--accent2)">Vega Movies</a> ও <a href="https://www.themoviedb.org/" target="_blank" rel="noopener" style="color:var(--accent2)">TMDB</a> ও <a href="https://v3-cinemeta.strem.io/" target="_blank" rel="noopener" style="color:var(--accent2)">Cinemeta</a> • সব ট্রেইলার YouTube-এ অফিসিয়াল চ্যানেলের এমবেড</span>
         <span>মাই লিস্ট ও Continue Watching এই সেশনেই থাকে — পেজ রিফ্রেশ হলে মুছে যাবে।</span>
       </div>
     </footer>
@@ -330,7 +330,7 @@
       <div class="modal" style="max-width:560px">
         <div class="modal-body" style="padding:1.4rem clamp(1rem,3vw,1.8rem) 1.6rem">
           <h2 class="disp" style="margin:.2rem 0 .6rem;font-size:1.5rem">সেটিংস — TMDB API</h2>
-          <p class="set-note">TMDB key বসালে প্রতিদিন নতুন মুভি আসবে — <b>Trending This Week</b> আর <b>Now Playing</b> রো দুইটা TMDB থেকে ফ্রেশ লোড হবে। Key ছাড়া বিল্ট-ইন + ওপেন-সোর্স ক্যাটালগই চলবে।</p>
+          <p class="set-note">TMDB key বসালে প্রতিদিন নতুন মুভি আসবে — <b>Trending This Week</b>, <b>Trending Today</b>, <b>Now Playing</b>, <b>Coming Soon</b>, <b>Popular</b> আর <b>Top Rated</b> রো TMDB থেকে ফ্রেশ লোড হবে। Key ছাড়া বিল্ট-ইন + ওপেন-সোর্স ক্যাটালগই চলবে।</p>
           <label for="tmdbKeyInput" style="font-weight:700">TMDB API Key / Read Access Token</label>
           <input id="tmdbKeyInput" class="key-input" type="password" placeholder="এখানে key পেস্ট করুন" autocomplete="off" />
           <div style="display:flex;gap:.6rem;flex-wrap:wrap">
@@ -582,6 +582,10 @@
       html = cwSection()
         + (tmdbTrending.length ? railSection("Trending This Week", "TMDB — এই সপ্তাহের ট্রেন্ডিং", tmdbTrending) : "")
         + (tmdbNowPlaying.length ? railSection("Now Playing", "TMDB — এখন সিনেমা হলে", tmdbNowPlaying) : "")
+        + (tmdbTrendingDay.length ? railSection("Trending Today", "TMDB — আজকের ট্রেন্ডিং", tmdbTrendingDay) : "")
+        + (tmdbUpcoming.length ? railSection("Coming Soon", "TMDB — শীঘ্রই আসছে", tmdbUpcoming) : "")
+        + (tmdbPopular.length ? railSection("Popular", "TMDB — জনপ্রিয়", tmdbPopular) : "")
+        + (tmdbTopRated.length ? railSection("Top Rated on TMDB", "TMDB — সর্বোচ্চ রেটিং", tmdbTopRated) : "")
         + railSection("Trending Now", "সবাই যা দেখছে", trending)
         + railSection("Top Rated", "সর্বোচ্চ রেটিং", top)
         + railSection("Popular on Sweet Movies", "", popular)
@@ -624,7 +628,9 @@
         + '<div><dt>রানটাইম</dt><dd class="bn">'+m.dur+'</dd></div>'
         + (m.src ? '<div><dt>ডেটা সোর্স</dt><dd class="bn">'+esc(m.src)+'</dd></div>' : "")
         + (m.imdb ? '<div><dt>IMDb</dt><dd><a href="https://www.imdb.com'+esc(m.imdb)+'" target="_blank" rel="noopener" style="color:var(--accent2)">পেজ দেখুন ↗</a></dd></div>' : "")
+        + (m.imdbRating ? '<div><dt>IMDb রেটিং</dt><dd><span class="star">★</span> <span class="en">'+m.imdbRating+' / 10</span></dd></div>' : "")
         + '</dl>'
+        + (m._watch ? '<h3 class="like-h">কোথায় দেখবেন (US)</h3><div class="m-meta">'+m._watch.names.map(function(n){ return '<span class="tag">'+esc(n)+'</span>'; }).join("")+'<a href="'+m._watch.link+'" target="_blank" rel="noopener" style="color:var(--accent2)">TMDB-তে দেখুন ↗</a></div>' : "")
         + (like.length ? '<h3 class="like-h">More Like This</h3><div class="like-grid">'+like.map(card).join("")+'</div>' : "")
         + '</div>';
       detailScrim.classList.add("open");
@@ -743,7 +749,7 @@
 
     /* ---------- TMDB (daily fresh movies) ---------- */
     var TMDB_KEY_LS = "sweetmovies_tmdb_key";
-    var tmdbTrending = [], tmdbNowPlaying = [];
+    var tmdbTrending = [], tmdbNowPlaying = [], tmdbTrendingDay = [], tmdbUpcoming = [], tmdbPopular = [], tmdbTopRated = [];
     var TMDB_GENRES = {28:"Action",12:"Adventure",16:"Animation",35:"Comedy",80:"Crime",99:"Documentary",18:"Drama",10751:"Family",14:"Fantasy",36:"History",27:"Horror",10402:"Music",9648:"Mystery",10749:"Romance",878:"Sci-Fi",10770:"TV Movie",53:"Thriller",10752:"War",37:"Western"};
     var TMDB_LANGS = {en:"English", bn:"বাংলা", hi:"Hindi", ko:"Korean", ja:"Japanese"};
     function tmdbKey(){ try{ return (localStorage.getItem(TMDB_KEY_LS)||"").trim(); }catch(e){ return ""; } }
@@ -775,28 +781,33 @@
     function loadTmdb(known){
       var key = tmdbKey();
       if(!key) return Promise.resolve(0);
+      function addTo(list, results, popBase){
+        (results || []).slice(0,20).forEach(function(x, i){
+          var title = (x.title||"").toLowerCase();
+          if(!x.title || known[title]) return;
+          known[title] = 1;
+          var m = tmdbNorm(x, Math.max(50, popBase-i));
+          list.push(m); MOVIES.push(m); added++;
+        });
+      }
       var trend = tmdbFetch("/trending/movie/week?language=en-US&page=1").catch(function(){ return null; });
       var now = tmdbFetch("/movie/now_playing?language=en-US&page=1").catch(function(){ return null; });
-      return Promise.all([trend, now]).then(function(res){
+      var day = tmdbFetch("/trending/movie/day?language=en-US&page=1").catch(function(){ return null; });
+      var upc = tmdbFetch("/movie/upcoming?language=en-US&page=1").catch(function(){ return null; });
+      var pop = tmdbFetch("/movie/popular?language=en-US&page=1").catch(function(){ return null; });
+      var top = tmdbFetch("/movie/top_rated?language=en-US&page=1").catch(function(){ return null; });
+      return Promise.all([trend, now, day, upc, pop, top]).then(function(res){
         var t = res[0], n = res[1];
-        if(!t && !n){ tmdbStatus = "bad"; return 0; }
+        if(!t && !n && !res[2] && !res[3] && !res[4] && !res[5]){ tmdbStatus = "bad"; return 0; }
         tmdbStatus = "ok";
         var added = 0;
-        tmdbTrending = []; tmdbNowPlaying = [];
-        (t && t.results || []).slice(0,20).forEach(function(x, i){
-          var title = (x.title||"").toLowerCase();
-          if(!x.title || known[title]) return;
-          known[title] = 1;
-          var m = tmdbNorm(x, Math.max(60, 99-i));
-          tmdbTrending.push(m); MOVIES.push(m); added++;
-        });
-        (n && n.results || []).slice(0,20).forEach(function(x, i){
-          var title = (x.title||"").toLowerCase();
-          if(!x.title || known[title]) return;
-          known[title] = 1;
-          var m = tmdbNorm(x, Math.max(55, 88-i));
-          tmdbNowPlaying.push(m); MOVIES.push(m); added++;
-        });
+        tmdbTrending = []; tmdbNowPlaying = []; tmdbTrendingDay = []; tmdbUpcoming = []; tmdbPopular = []; tmdbTopRated = [];
+        addTo(tmdbTrending, t && t.results, 99);
+        addTo(tmdbNowPlaying, n && n.results, 88);
+        addTo(tmdbTrendingDay, res[2] && res[2].results, 88);
+        addTo(tmdbUpcoming, res[3] && res[3].results, 70);
+        addTo(tmdbPopular, res[4] && res[4].results, 84);
+        addTo(tmdbTopRated, res[5] && res[5].results, 80);
         return added;
       });
     }
@@ -805,8 +816,9 @@
       m._enriched = 1;
       var det = tmdbFetch("/movie/"+m.tmdbId+"?language=en-US").catch(function(){ return null; });
       var cred = tmdbFetch("/movie/"+m.tmdbId+"/credits?language=en-US").catch(function(){ return null; });
-      Promise.all([det, cred]).then(function(res){
-        var d = res[0], c = res[1];
+      var prov = tmdbFetch("/movie/"+m.tmdbId+"/watch/providers").catch(function(){ return null; });
+      Promise.all([det, cred, prov]).then(function(res){
+        var d = res[0], c = res[1], p = res[2];
         if(d){
           if(d.runtime) m.dur = fmtMins(d.runtime);
           if(d.overview) m.s = d.overview;
@@ -817,6 +829,11 @@
           if(dir.length) m.dir = dir.map(function(p){ return p.name; }).join(", ");
           var cast = (c.cast||[]).slice(0,5).map(function(p){ return p.name; });
           if(cast.length) m.cast = cast.join(", ");
+        }
+        if(p && p.results && p.results.US){
+          var us = p.results.US;
+          var names = (us.flatrate||[]).map(function(x){ return x.provider_name; });
+          if(names.length) m._watch = {names:names.slice(0,6), link:"https://www.themoviedb.org/movie/"+m.tmdbId+"/watch"};
         }
         if(detailScrim.classList.contains("open")) openDetail(m.id);
       });
@@ -831,6 +848,52 @@
           || list.filter(function(x){ return x.site==="YouTube"; })[0];
         if(tr){ m.yt = tr.key; done(tr.key); } else done(null);
       }).catch(function(){ done(null); });
+    }
+
+    /* ---------- Cinemeta (keyless posters + IMDb ratings for poster-less rows) ---------- */
+    var cinemetaDone = false;
+    function applyPoster(m){
+      var cards = document.querySelectorAll('[data-detail="'+m.id+'"] .poster');
+      for(var i=0;i<cards.length;i++){ cards[i].outerHTML = poster(m); }
+    }
+    function enrichCinemeta(){
+      if(cinemetaDone) return; cinemetaDone = true;
+      var missing = MOVIES.filter(function(m){ return !m.img; });
+      if(!missing.length) return;
+      var queue = missing.slice(), active = 0;
+      function next(){
+        if(!queue.length) return;
+        if(active>=4) return;
+        var m = queue.shift(); active++;
+        fetchJson("https://v3-cinemeta.strem.io/catalog/movie/top/search="+encodeURIComponent(m.t)+".json", 10000)
+          .then(function(d){
+            var list = (d && d.metas) || [], hit = null;
+            for(var i=0;i<list.length;i++){
+              var cand = list[i];
+              if(!cand.name || cand.name.toLowerCase()!==m.t.toLowerCase()) continue;
+              if(m.y && cand.year && parseInt(cand.year,10)!==m.y) continue;
+              hit = cand; break;
+            }
+            if(!hit) return null;
+            if(hit.poster) m.img = hit.poster;
+            if(hit.imdb_id){ m.imdbId = hit.imdb_id; if(!m.imdb) m.imdb = "/title/"+hit.imdb_id+"/"; }
+            if(m.img) applyPoster(m);
+            if(!hit.imdb_id) return null;
+            return fetchJson("https://v3-cinemeta.strem.io/meta/movie/"+hit.imdb_id+".json", 10000).catch(function(){ return null; });
+          })
+          .then(function(md){
+            var meta = md && md.meta;
+            if(!meta) return;
+            if(meta.poster) m.img = meta.poster;
+            if(meta.imdbRating) m.imdbRating = meta.imdbRating;
+            var tr = (meta.trailers||[]).filter(function(x){ return x.type==="Trailer" && /^[A-Za-z0-9_-]{11}$/.test(x.source||""); })[0];
+            if(tr && !m.yt) m.yt = tr.source;
+            if(m.img) applyPoster(m);
+          }).catch(function(){})
+          .then(function(){ active--; next(); });
+        next();
+      }
+      next();
     }
 
     function rebuildGenres(){
@@ -853,7 +916,7 @@
     }
     function loadApis(manual){
       MOVIES = MOVIES.filter(function(m){ return !m.src; });
-      tmdbTrending = []; tmdbNowPlaying = []; tmdbStatus = "";
+      tmdbTrending = []; tmdbNowPlaying = []; tmdbTrendingDay = []; tmdbUpcoming = []; tmdbPopular = []; tmdbTopRated = []; tmdbStatus = ""; cinemetaDone = false;
       byId = {};
       MOVIES.forEach(function(m){ byId[m.id]=m; });
       apiRefresh.disabled = true;
@@ -953,6 +1016,7 @@
           apiStatus.innerHTML = "<b>TMDB key কাজ করছে না</b> — সেটিংস (⚙️) থেকে key ঠিকমতো বসানো হয়েছে কিনা দেখুন; বাকি ক্যাটালগ চলছে।";
         }
         render();
+        enrichCinemeta();
       });
     }
     apiRefresh.addEventListener("click", function(){ toast("API আবার লোড হচ্ছে…"); loadApis(true); });
