@@ -399,7 +399,7 @@
         modalImdbPage:"View page ↗", modalImdbRating:"IMDb Rating",
         watchTitle:"Where to Watch (US)", watchRentBuy:"Rent/Buy:", watchTmdb:"See on TMDB ↗",
         match:"Match", trailerBtn:"▶ Trailer", trailerWord:"Trailer", posterAlt:"poster", detailsAria:"details", trailerAgainAria:"watch trailer again", closeAria:"Close",
-        voice:"(voice)", ghibliCast:"Voice cast — Studio Ghibli", ghibliDesc:"A Studio Ghibli anime film.", openSrc:"open-source", anilistSrc:"AniList (free API)", anilistNoDesc:"No synopsis on AniList.", rowAnilist:"Trending Anime Movies", rowAnilistSub:"AniList — trending now",
+        voice:"(voice)", ghibliCast:"Voice cast — Studio Ghibli", ghibliDesc:"A Studio Ghibli anime film.", openSrc:"open-source", anilistSrc:"AniList (free API)", anilistNoDesc:"No synopsis on AniList.", rowAnilist:"Trending Anime Movies", rowAnilistSub:"AniList — trending now", rowOldest:"Oldest First", rowOldestSub:"Classics by year — oldest first",
         tmdbNoDesc:"No synopsis available on TMDB.", apiNoDesc:"No synopsis available in the API.",
         tmdbNote:" • TMDB connected — new movies daily",
         apiConnected:"<b>Live API connected</b> — <b>{n}</b> more titles from {s} • Total catalog <b>{t}</b>{u}",
@@ -448,7 +448,7 @@
         modalImdbPage:"পেজ দেখুন ↗", modalImdbRating:"IMDb রেটিং",
         watchTitle:"কোথায় দেখবেন (US)", watchRentBuy:"ভাড়া/কিনুন:", watchTmdb:"TMDB-তে দেখুন ↗",
         match:"ম্যাচ", trailerBtn:"▶ ট্রেইলার", trailerWord:"ট্রেইলার", posterAlt:"পোস্টার", detailsAria:"বিস্তারিত", trailerAgainAria:"ট্রেইলার আবার দেখুন", closeAria:"বন্ধ করুন",
-        voice:"(কণ্ঠ)", ghibliCast:"কণ্ঠশিল্পী — Studio Ghibli", ghibliDesc:"Studio Ghibli-র অ্যানিমে ছবি।", openSrc:"ওপেন-সোর্স", anilistSrc:"AniList (ফ্রি API)", anilistNoDesc:"AniList-এ বিবরণ নেই।", rowAnilist:"ট্রেন্ডিং অ্যানিমে মুভি", rowAnilistSub:"AniList — এখন ট্রেন্ডিং",
+        voice:"(কণ্ঠ)", ghibliCast:"কণ্ঠশিল্পী — Studio Ghibli", ghibliDesc:"Studio Ghibli-র অ্যানিমে ছবি।", openSrc:"ওপেন-সোর্স", anilistSrc:"AniList (ফ্রি API)", anilistNoDesc:"AniList-এ বিবরণ নেই।", rowAnilist:"ট্রেন্ডিং অ্যানিমে মুভি", rowAnilistSub:"AniList — এখন ট্রেন্ডিং", rowOldest:"সবচেয়ে পুরনো আগে", rowOldestSub:"বছর অনুযায়ী — পুরনো আগে",
         tmdbNoDesc:"এই মুভির বিবরণ TMDB-তে পাওয়া যায়নি।", apiNoDesc:"এই মুভির বিবরণ API-তে পাওয়া যায়নি।",
         tmdbNote:" • TMDB সংযুক্ত — প্রতিদিন নতুন মুভি আসছে",
         apiConnected:"<b>লাইভ API সংযুক্ত</b> — {s} থেকে আরও <b>{n}</b>টি টাইটেল যোগ হয়েছে • মোট ক্যাটালগ <b>{t}</b>টি{u}",
@@ -719,9 +719,12 @@
 
       /* home */
       var trending = sorted(MOVIES.filter(function(m){return m.pop>=90;}));
-      var top = MOVIES.slice().sort(function(a,b){return b.r-a.r;}).slice(0,10);
+      var top = MOVIES.slice().sort(function(a,b){return (b.r-a.r) || (b.pop-a.pop);}).slice(0,12);
+      var oldest = MOVIES.filter(function(m){return m.y>0;}).slice().sort(function(a,b){ return (a.y-b.y) || (b.r-a.r); }).slice(0,12);
       var popular = sorted(MOVIES.filter(function(m){return m.pop>=85 && m.pop<97;}));
       html = cwSection()
+        + railSection(t("rowOldest"), t("rowOldestSub"), oldest)
+        + railSection("Top Rated", t("rowTopRatedSub"), top)
         + (tmdbTrending.length ? railSection("Trending This Week", t("tmdbSubWeek"), tmdbTrending) : "")
         + (tmdbNowPlaying.length ? railSection("Now Playing", t("tmdbSubNow"), tmdbNowPlaying) : "")
         + (tmdbTrendingDay.length ? railSection("Trending Today", t("tmdbSubDay"), tmdbTrendingDay) : "")
@@ -729,7 +732,6 @@
         + (tmdbPopular.length ? railSection("Popular", t("tmdbSubPop"), tmdbPopular) : "")
         + (tmdbTopRated.length ? railSection("Top Rated on TMDB", t("tmdbSubTop"), tmdbTopRated) : "")
         + railSection("Trending Now", t("rowTrendingNowSub"), trending)
-        + railSection("Top Rated", t("rowTopRatedSub"), top)
         + railSection("Popular on Sweet Movies", "", popular)
         + railSection(t("rowAction"), "Action", sorted(MOVIES.filter(function(m){return m.g.indexOf("Action")>=0;})))
         + railSection(t("rowScifi"), "", sorted(MOVIES.filter(function(m){return m.g.indexOf("Sci-Fi")>=0 || m.g.indexOf("Adventure")>=0;})))
@@ -793,15 +795,14 @@
     var trailerStarted = 0, trailerMovie = null;
     function openTrailer(id){
       var m = byId[id]; if(!m) return;
-      if(!m.yt && m.tmdb){
+      if(!m.yt){
         toast(t("toastFinding"));
-        fetchTmdbTrailer(m, function(key){
+        resolveTrailer(m, function(key){
           if(key) openTrailer(id);
           else toast(t("toastNoTrailer"));
         });
         return;
       }
-      if(!m.yt){ toast(t("toastNoTrailerLink")); return; }
       trailerMovie = m; trailerStarted = Date.now();
       document.getElementById("trailerTitle").textContent = m.t + " — Official Trailer";
       document.getElementById("trailerYt").href = "https://www.youtube.com/watch?v=" + m.yt;
@@ -895,7 +896,7 @@
     var apiLoaded = false;
 
     /* ---------- TMDB (daily fresh movies) ---------- */
-    var DEFAULT_TMDB_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMGFiN2NkZTQzOGY5NGNiOGE0MmY4MWE4OWM1N2NkZSIsIm5iZiI6MTc5NTUyNjc0NS4xNzYsInN1YiI6IjZiMDU5MDU5MDc3OTI5ODRiYjZhOTAwYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.aXqJgN50POmq2Me-3M0S7P11udqEzY2BSbrpxxpNGoM"; /* ⚠️ GUARD: the real key lives ONLY in the repo (commit 6f01ec6) — this local copy keeps the placeholder. NEVER push this file with an empty key: at deploy time the worker must fill this line from https://www.themoviedb.org/settings/api (account SONETCreativity) in the web editor before committing, and never report the value. */
+    var DEFAULT_TMDB_KEY = ""; /* ⚠️ GUARD: the real key lives ONLY in the repo (commit 6f01ec6) — this local copy keeps the placeholder. NEVER push this file with an empty key: at deploy time the worker must fill this line from https://www.themoviedb.org/settings/api (account SONETCreativity) in the web editor before committing, and never report the value. */
     var TMDB_KEY_LS = "sweetmovies_tmdb_key";
     var tmdbTrending = [], tmdbNowPlaying = [], tmdbTrendingDay = [], tmdbUpcoming = [], tmdbPopular = [], tmdbTopRated = [];
     var anilistTrending = [];
@@ -1008,6 +1009,32 @@
         }
         if(detailScrim.classList.contains("open")) openDetail(m.id);
       });
+    }
+    function resolveTrailer(m, done){
+      if(m.yt){ done(m.yt); return; }
+      if(m._noTrailer){ done(null); return; }
+      if(m.tmdb){ fetchTmdbTrailer(m, done); return; }
+      function tryCinemeta(){
+        fetchJson("https://v3-cinemeta.strem.io/catalog/movie/top/search="+encodeURIComponent(m.t)+".json", 10000).then(function(d){
+          var list = (d && d.metas) || [], hit = null;
+          for(var i=0;i<list.length;i++){ var c = list[i]; if(c.name && c.name.toLowerCase()===m.t.toLowerCase()){ if(m.y && c.year && parseInt(c.year,10)!==m.y) continue; hit = c; break; } }
+          if(!hit || !hit.imdb_id){ m._noTrailer = 1; done(null); return; }
+          fetchJson("https://v3-cinemeta.strem.io/meta/movie/"+hit.imdb_id+".json", 10000).then(function(md){
+            var trs = (md && md.meta && md.meta.trailers) || [];
+            for(var j=0;j<trs.length;j++){ var s2 = trs[j] && trs[j].source; if(s2 && /^[A-Za-z0-9_-]{11}$/.test(s2)){ m.yt = s2; done(s2); return; } }
+            m._noTrailer = 1; done(null);
+          }).catch(function(){ m._noTrailer = 1; done(null); });
+        }).catch(function(){ m._noTrailer = 1; done(null); });
+      }
+      if(!tmdbKey()){ tryCinemeta(); return; }
+      tmdbFetch("/search/movie?language=en-US&query="+encodeURIComponent(m.t)+"&page=1&include_adult=false").then(function(s){
+        var res = (s && s.results) || [], hit = null;
+        for(var i=0;i<res.length;i++){ if(res[i].title && res[i].title.toLowerCase()===m.t.toLowerCase()){ hit = res[i]; break; } }
+        if(!hit && res.length) hit = res[0];
+        if(!hit){ tryCinemeta(); return; }
+        m.tmdb = 1; m.tmdbId = hit.id;
+        fetchTmdbTrailer(m, function(key){ if(key) done(key); else tryCinemeta(); });
+      }).catch(function(){ tryCinemeta(); });
     }
     function fetchTmdbTrailer(m, done){
       if(m.yt){ done(m.yt); return; }
