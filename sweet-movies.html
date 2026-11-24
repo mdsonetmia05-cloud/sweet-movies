@@ -895,7 +895,7 @@
     var apiLoaded = false;
 
     /* ---------- TMDB (daily fresh movies) ---------- */
-    var DEFAULT_TMDB_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMGFiN2NkZTQzOGY5NGNiOGE0MmY4MWE4OWM1N2NkZSIsIm5iZiI6MTc5NTUyNjc0NS4xNzYsInN1YiI6IjZiMDU5MDU5MDc3OTI5ODRiYjZhOTAwYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.aXqJgN50POmq2Me-3M0S7P11udqEzY2BSbrpxxpNGoM"; /* built-in TMDB key — filled at deploy time so the site works without pasting a key */
+    var DEFAULT_TMDB_KEY = ""; /* ⚠️ GUARD: the real key lives ONLY in the repo (commit 6f01ec6) — this local copy keeps the placeholder. NEVER push this file with an empty key: at deploy time the worker must fill this line from https://www.themoviedb.org/settings/api (account SONETCreativity) in the web editor before committing, and never report the value. */
     var TMDB_KEY_LS = "sweetmovies_tmdb_key";
     var tmdbTrending = [], tmdbNowPlaying = [], tmdbTrendingDay = [], tmdbUpcoming = [], tmdbPopular = [], tmdbTopRated = [];
     var anilistTrending = [];
@@ -954,9 +954,13 @@
       var top = tmdbFetch("/movie/top_rated?language=en-US&page=1").catch(function(){ return null; });
       var day2 = tmdbFetch("/trending/movie/day?language=en-US&page=2").catch(function(){ return null; });
       var pop2 = tmdbFetch("/movie/popular?language=en-US&page=2").catch(function(){ return null; });
-      return Promise.all([trend, now, day, upc, pop, top, day2, pop2]).then(function(res){
+      var week2 = tmdbFetch("/trending/movie/week?language=en-US&page=2").catch(function(){ return null; });
+      var now2 = tmdbFetch("/movie/now_playing?language=en-US&page=2").catch(function(){ return null; });
+      var upc2 = tmdbFetch("/movie/upcoming?language=en-US&page=2").catch(function(){ return null; });
+      var top2 = tmdbFetch("/movie/top_rated?language=en-US&page=2").catch(function(){ return null; });
+      return Promise.all([trend, now, day, upc, pop, top, day2, pop2, week2, now2, upc2, top2]).then(function(res){
         var t = res[0], n = res[1];
-        if(!t && !n && !res[2] && !res[3] && !res[4] && !res[5] && !res[6] && !res[7]){ tmdbStatus = "bad"; return 0; }
+        if(!t && !n && !res[2] && !res[3] && !res[4] && !res[5] && !res[6] && !res[7] && !res[8] && !res[9] && !res[10] && !res[11]){ tmdbStatus = "bad"; return 0; }
         tmdbStatus = "ok";
         added = 0;
         tmdbTrending = []; tmdbNowPlaying = []; tmdbTrendingDay = []; tmdbUpcoming = []; tmdbPopular = []; tmdbTopRated = [];
@@ -968,6 +972,10 @@
         addTo(tmdbTrendingDay, res[6] && res[6].results, 68);
         addTo(tmdbPopular, res[7] && res[7].results, 64);
         addTo(tmdbTopRated, res[5] && res[5].results, 80);
+        addTo(tmdbTrending, res[8] && res[8].results, 90);
+        addTo(tmdbNowPlaying, res[9] && res[9].results, 80);
+        addTo(tmdbUpcoming, res[10] && res[10].results, 62);
+        addTo(tmdbTopRated, res[11] && res[11].results, 72);
         return added;
       });
     }
@@ -1104,7 +1112,7 @@
 
       var p1 = fetchJson("https://raw.githubusercontent.com/theapache64/top250/master/top250_min.json")
         .then(function(rows){
-          rows.slice().sort(function(a,b){ return (b.rating||0)-(a.rating||0); }).slice(0,150).forEach(function(x, i){
+          rows.slice().sort(function(a,b){ return (b.rating||0)-(a.rating||0); }).slice(0,250).forEach(function(x, i){
             if(!x.name || known[x.name.toLowerCase()]) return;
             known[x.name.toLowerCase()] = 1;
             var id = "api250-" + i;
@@ -1150,7 +1158,7 @@
         .then(function(rows){
           rows.filter(function(x){ return x && x.Title != null && typeof x["IMDB Rating"] === "number" && typeof x["IMDB Votes"] === "number" && x["IMDB Votes"] >= 5000; })
             .sort(function(a,b){ return (b["IMDB Rating"]-a["IMDB Rating"]) || (b["IMDB Votes"]-a["IMDB Votes"]); })
-            .slice(0,150).forEach(function(x, i){
+            .slice(0,350).forEach(function(x, i){
               var title = String(x.Title).trim();
               if(!title || known[title.toLowerCase()]) return;
               known[title.toLowerCase()] = 1;
@@ -1173,7 +1181,7 @@
       var p4 = loadTmdb(known).then(function(n){ if(n>0) okSrc.push("TMDB"); }).catch(function(){});
 
       var p5 = Promise.race([
-        fetch("https://graphql.anilist.co", {method:"POST", headers:{"Content-Type":"application/json","Accept":"application/json"}, body: JSON.stringify({query:"query { Page(page:1, perPage:20){ media(type: ANIME, format: MOVIE, sort: TRENDING_DESC){ id title { romaji english } averageScore coverImage { large } genres description startDate { year } duration trailer { id site } } } }"})}).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }),
+        fetch("https://graphql.anilist.co", {method:"POST", headers:{"Content-Type":"application/json","Accept":"application/json"}, body: JSON.stringify({query:"query { Page(page:1, perPage:50){ media(type: ANIME, format: MOVIE, sort: TRENDING_DESC){ id title { romaji english } averageScore coverImage { large } genres description startDate { year } duration trailer { id site } } } }"})}).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }),
         new Promise(function(_, rej){ setTimeout(function(){ rej(new Error("timeout")); }, 12000); })
       ]).then(function(d){
         var list = (d && d.data && d.data.Page && d.data.Page.media) || [];
