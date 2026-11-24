@@ -261,6 +261,7 @@
         <p class="lead" id="heroLead" data-i18n="heroLead">Paul Atreides rides a sandworm across the deserts of Arrakis with the Fremen — an epic journey of revenge against the Harkonnens and facing his own destiny.</p>
         <div class="hero-cta">
           <button class="btn btn-red" type="button" id="heroTrailerBtn" data-trailer="dune2" data-i18n="heroTrailer">▶ Watch Trailer</button>
+          <a class="btn btn-ghost" id="heroOrigBtn" href="#" target="_blank" rel="noopener" style="display:none" data-i18n="originalBtn">Original ↗</a>
           <button class="btn btn-ghost" type="button" id="heroDetailBtn" data-detail="dune2" data-i18n="heroDetails">ⓘ Details</button>
           <button class="btn btn-ghost" type="button" data-list="dune2" id="heroListBtn">+ My List</button>
         </div>
@@ -406,7 +407,7 @@
         modalImdbPage:"View page ↗", modalImdbRating:"IMDb Rating",
         watchTitle:"Where to Watch (US)", watchRentBuy:"Rent/Buy:", watchTmdb:"See on TMDB ↗",
         match:"Match", trailerBtn:"▶ Trailer", trailerWord:"Trailer", posterAlt:"poster", detailsAria:"details", trailerAgainAria:"watch trailer again", closeAria:"Close",
-        voice:"(voice)", ghibliCast:"Voice cast — Studio Ghibli", ghibliDesc:"A Studio Ghibli anime film.", openSrc:"open-source", anilistSrc:"AniList (free API)", anilistNoDesc:"No synopsis on AniList.", rowAnilist:"Trending Anime Movies", rowAnilistSub:"AniList — trending now", castTitle:"Top Cast", modalBudget:"Budget", modalRevenue:"Box Office", modalVotes:"Votes", searchLive:"Searching TMDB for more results…", rowOldest:"Oldest First", rowOldestSub:"Classics by year — oldest first",
+        voice:"(voice)", ghibliCast:"Voice cast — Studio Ghibli", ghibliDesc:"A Studio Ghibli anime film.", openSrc:"open-source", anilistSrc:"AniList (free API)", anilistNoDesc:"No synopsis on AniList.", rowAnilist:"Trending Anime Movies", rowAnilistSub:"AniList — trending now", castTitle:"Top Cast", modalBudget:"Budget", modalRevenue:"Box Office", modalVotes:"Votes", searchLive:"Searching TMDB for more results…", originalBtn:"Original ↗", rowOldest:"Oldest First", rowOldestSub:"Classics by year — oldest first",
         tmdbNoDesc:"No synopsis available on TMDB.", apiNoDesc:"No synopsis available in the API.",
         tmdbNote:" • TMDB connected — new movies daily",
         apiConnected:"<b>Live API connected</b> — <b>{n}</b> more titles from {s} • Total catalog <b>{t}</b>{u}",
@@ -455,7 +456,7 @@
         modalImdbPage:"পেজ দেখুন ↗", modalImdbRating:"IMDb রেটিং",
         watchTitle:"কোথায় দেখবেন (US)", watchRentBuy:"ভাড়া/কিনুন:", watchTmdb:"TMDB-তে দেখুন ↗",
         match:"ম্যাচ", trailerBtn:"▶ ট্রেইলার", trailerWord:"ট্রেইলার", posterAlt:"পোস্টার", detailsAria:"বিস্তারিত", trailerAgainAria:"ট্রেইলার আবার দেখুন", closeAria:"বন্ধ করুন",
-        voice:"(কণ্ঠ)", ghibliCast:"কণ্ঠশিল্পী — Studio Ghibli", ghibliDesc:"Studio Ghibli-র অ্যানিমে ছবি।", openSrc:"ওপেন-সোর্স", anilistSrc:"AniList (ফ্রি API)", anilistNoDesc:"AniList-এ বিবরণ নেই।", rowAnilist:"ট্রেন্ডিং অ্যানিমে মুভি", rowAnilistSub:"AniList — এখন ট্রেন্ডিং", castTitle:"প্রধান অভিনেতা", modalBudget:"বাজেট", modalRevenue:"বক্স অফিস", modalVotes:"ভোট", searchLive:"TMDB-তে আরও ফলাফল খুঁজছি…", rowOldest:"সবচেয়ে পুরনো আগে", rowOldestSub:"বছর অনুযায়ী — পুরনো আগে",
+        voice:"(কণ্ঠ)", ghibliCast:"কণ্ঠশিল্পী — Studio Ghibli", ghibliDesc:"Studio Ghibli-র অ্যানিমে ছবি।", openSrc:"ওপেন-সোর্স", anilistSrc:"AniList (ফ্রি API)", anilistNoDesc:"AniList-এ বিবরণ নেই।", rowAnilist:"ট্রেন্ডিং অ্যানিমে মুভি", rowAnilistSub:"AniList — এখন ট্রেন্ডিং", castTitle:"প্রধান অভিনেতা", modalBudget:"বাজেট", modalRevenue:"বক্স অফিস", modalVotes:"ভোট", searchLive:"TMDB-তে আরও ফলাফল খুঁজছি…", originalBtn:"অরিজিনাল ↗", rowOldest:"সবচেয়ে পুরনো আগে", rowOldestSub:"বছর অনুযায়ী — পুরনো আগে",
         tmdbNoDesc:"এই মুভির বিবরণ TMDB-তে পাওয়া যায়নি।", apiNoDesc:"এই মুভির বিবরণ API-তে পাওয়া যায়নি।",
         tmdbNote:" • TMDB সংযুক্ত — প্রতিদিন নতুন মুভি আসছে",
         apiConnected:"<b>লাইভ API সংযুক্ত</b> — {s} থেকে আরও <b>{n}</b>টি টাইটেল যোগ হয়েছে • মোট ক্যাটালগ <b>{t}</b>টি{u}",
@@ -614,6 +615,12 @@
     function stripHtml(s){ var d=document.createElement("div"); d.innerHTML=s; return (d.textContent||"").replace(/\s+/g," ").trim(); }
     function fmtNum(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
     function moneyFmt(n){ if(n>=1e9) return "$"+(n/1e9).toFixed(1)+"B"; if(n>=1e6) return "$"+Math.round(n/1e6)+"M"; return "$"+fmtNum(n); }
+    function origLink(m){
+      if(m.tmdb) return "https://www.themoviedb.org/movie/"+m.tmdbId;
+      if(m.imdb) return "https://www.imdb.com"+m.imdb;
+      if(m.id && m.id.indexOf("apian-")===0) return "https://anilist.co/anime/"+m.id.slice(6);
+      return null;
+    }
     function durText(m){ if(m.durMin) return fmtMins(m.durMin); if(m.dur) return m.dur; return "—"; }
     function descText(m){ return (LANG==="bn" && m.sb) ? m.sb : m.s; }
 
@@ -714,6 +721,7 @@
       document.getElementById("heroLang").textContent = langName(m.lang);
       document.getElementById("heroLead").textContent = descText(m);
       var tb = document.getElementById("heroTrailerBtn"); if(tb) tb.setAttribute("data-trailer", m.id);
+      var ob = document.getElementById("heroOrigBtn"); if(ob){ var ol = origLink(m); if(ol){ ob.href = ol; ob.style.display = ""; } else ob.style.display = "none"; }
       var db = document.getElementById("heroDetailBtn"); if(db) db.setAttribute("data-detail", m.id);
       var hb = document.getElementById("heroListBtn"); if(hb){ hb.setAttribute("data-list", m.id); hb.classList.toggle("added", myList.has(m.id)); hb.textContent = myList.has(m.id) ? t("listIn") : t("listAddBtn"); }
     }
@@ -773,6 +781,7 @@
       var oldest = MOVIES.filter(function(m){return m.y>0;}).slice().sort(function(a,b){ return (a.y-b.y) || (b.r-a.r); }).slice(0,12);
       var popular = sorted(MOVIES.filter(function(m){return m.pop>=85 && m.pop<97;}));
       html = cwSection()
+        + railSection("Trending Now", t("rowTrendingNowSub"), trending)
         + railSection(t("rowOldest"), t("rowOldestSub"), oldest)
         + railSection("Top Rated", t("rowTopRatedSub"), top)
         + (tmdbTrending.length ? railSection("Trending This Week", t("tmdbSubWeek"), tmdbTrending) : "")
@@ -781,7 +790,6 @@
         + (tmdbUpcoming.length ? railSection("Coming Soon", t("tmdbSubSoon"), tmdbUpcoming) : "")
         + (tmdbPopular.length ? railSection("Popular", t("tmdbSubPop"), tmdbPopular) : "")
         + (tmdbTopRated.length ? railSection("Top Rated on TMDB", t("tmdbSubTop"), tmdbTopRated) : "")
-        + railSection("Trending Now", t("rowTrendingNowSub"), trending)
         + railSection("Popular on Sweet Movies", "", popular)
         + railSection(t("rowAction"), "Action", sorted(MOVIES.filter(function(m){return m.g.indexOf("Action")>=0;})))
         + railSection(t("rowScifi"), "", sorted(MOVIES.filter(function(m){return m.g.indexOf("Sci-Fi")>=0 || m.g.indexOf("Adventure")>=0;})))
@@ -808,7 +816,8 @@
         + '<button class="x" type="button" data-close aria-label="'+t("closeAria")+'">✕</button>'
         + '<div class="mh-in"><h2>'+esc(m.t)+'</h2>'
         + '<div style="display:flex;gap:.6rem;flex-wrap:wrap">'
-        + ((m.yt || m.tmdb) ? '<button class="btn btn-red" type="button" data-trailer="'+m.id+'">'+t("trailerBtn")+'</button>' : "")
+        + '<button class="btn btn-red" type="button" data-trailer="'+m.id+'">'+t("trailerBtn")+'</button>'
+        + (origLink(m) ? '<a class="btn btn-ghost" href="'+origLink(m)+'" target="_blank" rel="noopener">'+t("originalBtn")+'</a>' : "")
         + '<button class="btn btn-ghost'+(inList?" added":"")+'" type="button" data-list="'+m.id+'">'+(inList?t("listIn"):t("listAddBtn"))+'</button>'
         + '</div></div></div>'
         + '<div class="modal-body">'
@@ -972,7 +981,7 @@
     var apiLoaded = false;
 
     /* ---------- TMDB (daily fresh movies) ---------- */
-    var DEFAULT_TMDB_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMGFiN2NkZTQzOGY5NGNiOGE0MmY4MWE4OWM1N2NkZSIsIm5iZiI6MTc5NTUyNjc0NS4xNzYsInN1YiI6IjZiMDU5MDU5MDc3OTI5ODRiYjZhOTAwYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.aXqJgN50POmq2Me-3M0S7P11udqEzY2BSbrpxxpNGoM"; /* ⚠️ GUARD: the real key lives ONLY in the repo (commit 6f01ec6) — this local copy keeps the placeholder. NEVER push this file with an empty key: at deploy time the worker must fill this line from https://www.themoviedb.org/settings/api (account SONETCreativity) in the web editor before committing, and never report the value. */
+    var DEFAULT_TMDB_KEY = ""; /* ⚠️ GUARD: the real key lives ONLY in the repo (commit 6f01ec6) — this local copy keeps the placeholder. NEVER push this file with an empty key: at deploy time the worker must fill this line from https://www.themoviedb.org/settings/api (account SONETCreativity) in the web editor before committing, and never report the value. */
     var TMDB_KEY_LS = "sweetmovies_tmdb_key";
     var tmdbTrending = [], tmdbNowPlaying = [], tmdbTrendingDay = [], tmdbUpcoming = [], tmdbPopular = [], tmdbTopRated = [];
     var anilistTrending = [];
