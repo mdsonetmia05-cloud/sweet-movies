@@ -630,7 +630,7 @@
         + (m.imdb ? '<div><dt>IMDb</dt><dd><a href="https://www.imdb.com'+esc(m.imdb)+'" target="_blank" rel="noopener" style="color:var(--accent2)">পেজ দেখুন ↗</a></dd></div>' : "")
         + (m.imdbRating ? '<div><dt>IMDb রেটিং</dt><dd><span class="star">★</span> <span class="en">'+m.imdbRating+' / 10</span></dd></div>' : "")
         + '</dl>'
-        + (m._watch ? '<h3 class="like-h">কোথায় দেখবেন (US)</h3><div class="m-meta">'+m._watch.names.map(function(n){ return '<span class="tag">'+esc(n)+'</span>'; }).join("")+'<a href="'+m._watch.link+'" target="_blank" rel="noopener" style="color:var(--accent2)">TMDB-তে দেখুন ↗</a></div>' : "")
+        + (m._watch ? '<h3 class="like-h">কোথায় দেখবেন (US)</h3><div class="m-meta">'+m._watch.names.map(function(n){ return '<span class="tag">'+esc(n)+'</span>'; }).join("")+(m._watch.rentBuy && m._watch.rentBuy.length ? '<span class="tag" style="opacity:.75">ভাড়া/কিনুন: '+m._watch.rentBuy.map(esc).join(", ")+'</span>' : "")+'<a href="'+m._watch.link+'" target="_blank" rel="noopener" style="color:var(--accent2)">TMDB-তে দেখুন ↗</a></div>' : "")
         + (like.length ? '<h3 class="like-h">More Like This</h3><div class="like-grid">'+like.map(card).join("")+'</div>' : "")
         + '</div>';
       detailScrim.classList.add("open");
@@ -797,9 +797,11 @@
       var upc = tmdbFetch("/movie/upcoming?language=en-US&page=1").catch(function(){ return null; });
       var pop = tmdbFetch("/movie/popular?language=en-US&page=1").catch(function(){ return null; });
       var top = tmdbFetch("/movie/top_rated?language=en-US&page=1").catch(function(){ return null; });
-      return Promise.all([trend, now, day, upc, pop, top]).then(function(res){
+      var day2 = tmdbFetch("/trending/movie/day?language=en-US&page=2").catch(function(){ return null; });
+      var pop2 = tmdbFetch("/movie/popular?language=en-US&page=2").catch(function(){ return null; });
+      return Promise.all([trend, now, day, upc, pop, top, day2, pop2]).then(function(res){
         var t = res[0], n = res[1];
-        if(!t && !n && !res[2] && !res[3] && !res[4] && !res[5]){ tmdbStatus = "bad"; return 0; }
+        if(!t && !n && !res[2] && !res[3] && !res[4] && !res[5] && !res[6] && !res[7]){ tmdbStatus = "bad"; return 0; }
         tmdbStatus = "ok";
         added = 0;
         tmdbTrending = []; tmdbNowPlaying = []; tmdbTrendingDay = []; tmdbUpcoming = []; tmdbPopular = []; tmdbTopRated = [];
@@ -808,6 +810,8 @@
         addTo(tmdbTrendingDay, res[2] && res[2].results, 88);
         addTo(tmdbUpcoming, res[3] && res[3].results, 70);
         addTo(tmdbPopular, res[4] && res[4].results, 84);
+        addTo(tmdbTrendingDay, res[6] && res[6].results, 68);
+        addTo(tmdbPopular, res[7] && res[7].results, 64);
         addTo(tmdbTopRated, res[5] && res[5].results, 80);
         return added;
       });
@@ -833,8 +837,11 @@
         }
         if(p && p.results && p.results.US){
           var us = p.results.US;
-          var names = (us.flatrate||[]).map(function(x){ return x.provider_name; });
-          if(names.length) m._watch = {names:names.slice(0,6), link:"https://www.themoviedb.org/movie/"+m.tmdbId+"/watch"};
+          var names = [], rentBuy = [];
+          (us.flatrate||[]).forEach(function(x){ if(names.indexOf(x.provider_name)<0) names.push(x.provider_name); });
+          (us.rent||[]).forEach(function(x){ if(names.indexOf(x.provider_name)<0 && rentBuy.indexOf(x.provider_name)<0) rentBuy.push(x.provider_name); });
+          (us.buy||[]).forEach(function(x){ if(names.indexOf(x.provider_name)<0 && rentBuy.indexOf(x.provider_name)<0) rentBuy.push(x.provider_name); });
+          if(names.length || rentBuy.length) m._watch = {names:names.slice(0,6), rentBuy:rentBuy.slice(0,4), link:"https://www.themoviedb.org/movie/"+m.tmdbId+"/watch"};
         }
         if(detailScrim.classList.contains("open")) openDetail(m.id);
       });
