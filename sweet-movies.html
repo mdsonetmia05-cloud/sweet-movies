@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="bn">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="dark" />
     <link rel="icon" href="data:," />
-    <title>Sweet Movies — ক্যাটালগ ও ট্রেইলার</title>
+    <title>Sweet Movies — Catalog &amp; Trailers</title>
     <link href="https://fonts.cdnfonts.com/css/solaimanlipi" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -227,57 +227,57 @@
     <header class="top">
       <div class="top-in">
         <a class="brand" href="#" id="brandHome">SWEET<b>MOVIES</b></a>
-        <nav class="main" aria-label="প্রধান">
-          <button type="button" data-tab="home" class="on">হোম</button>
-          <button type="button" data-tab="movies">মুভি</button>
-          <button type="button" data-tab="anime">অ্যানিমে</button>
-          <button type="button" data-tab="mylist">মাই লিস্ট <span class="list-count" id="listCount" hidden>0</span></button>
+        <nav class="main" aria-label="Main">
+          <button type="button" data-tab="home" class="on" data-i18n="navHome">Home</button>
+          <button type="button" data-tab="movies" data-i18n="navMovies">Movies</button>
+          <button type="button" data-tab="anime" data-i18n="navAnime">Anime</button>
+          <button type="button" data-tab="mylist"><span data-i18n="navMylist">My List</span> <span class="list-count" id="listCount" hidden>0</span></button>
         </nav>
         <label class="search">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#a7b0c2" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
-          <input id="q" type="search" placeholder="মুভি খুঁজুন… যেমন Inception" aria-label="মুভি খুঁজুন" />
+          <input id="q" type="search" data-i18n-ph="searchPh" placeholder="Search movies… e.g. Inception" data-i18n-aria="searchPh" aria-label="Search movies" />
         </label>
-        <button class="icon-btn" type="button" id="settingsBtn" aria-label="সেটিংস — TMDB API" title="সেটিংস — TMDB API">⚙️</button>
+        <button class="icon-btn" type="button" id="settingsBtn" data-i18n-aria="settingsAria" aria-label="Settings — TMDB API" title="Settings — TMDB API">⚙️</button>
       </div>
     </header>
 
     <section class="hero" id="hero">
       <div class="hero-in">
-        <span class="hero-tag">★ এই সপ্তাহের হাইলাইট</span>
+        <span class="hero-tag" data-i18n="heroTag">★ This Week's Highlight</span>
         <h1>Dune: Part Two</h1>
         <div class="meta">
-          <span class="score">৮৫% ম্যাচ</span>
+          <span class="score" data-i18n="heroMatch">85% Match</span>
           <span><span class="star">★</span> <span class="en">8.5</span></span>
-          <span class="en">2024</span><span>২ ঘণ্টা ৪৬ মিনিট</span>
+          <span class="en">2024</span><span id="heroDur">2h 46m</span>
           <span>Sci-Fi • Adventure</span><span class="en">English</span>
         </div>
-        <p class="lead">পল অ্যাট্রেইডিস ফ্রেমেনদের সঙ্গে হাত মিলিয়ে আরাকিসের মরুভূমিতে হাঁটে স্যান্ডওয়ার্মের পিঠে — হারকোনেনদের বিরুদ্ধে প্রতিশোধ আর নিজের ভাগ্যের মুখোমুখি হওয়ার মহাকাব্যিক যাত্রা।</p>
+        <p class="lead" data-i18n="heroLead">Paul Atreides rides a sandworm across the deserts of Arrakis with the Fremen — an epic journey of revenge against the Harkonnens and facing his own destiny.</p>
         <div class="hero-cta">
-          <button class="btn btn-red" type="button" data-trailer="dune2">▶ ট্রেইলার দেখুন</button>
-          <button class="btn btn-ghost" type="button" data-detail="dune2">ⓘ বিস্তারিত</button>
-          <button class="btn btn-ghost" type="button" data-list="dune2" id="heroListBtn">＋ মাই লিস্ট</button>
+          <button class="btn btn-red" type="button" data-trailer="dune2" data-i18n="heroTrailer">▶ Watch Trailer</button>
+          <button class="btn btn-ghost" type="button" data-detail="dune2" data-i18n="heroDetails">ⓘ Details</button>
+          <button class="btn btn-ghost" type="button" data-list="dune2" id="heroListBtn">+ My List</button>
         </div>
       </div>
     </section>
 
     <div class="filters" id="filters">
       <div class="filters-in">
-        <span class="f-label">ভাষা:</span>
-        <button class="chip on" type="button" data-lang="all">সব</button>
+        <span class="f-label" data-i18n="filterLang">Language:</span>
+        <button class="chip on" type="button" data-lang="all" data-i18n="chipAll">All</button>
         <button class="chip" type="button" data-lang="English">English</button>
-        <button class="chip" type="button" data-lang="বাংলা">বাংলা</button>
+        <button class="chip" type="button" data-lang="বাংলা" data-i18n="chipBengali">Bengali</button>
         <button class="chip" type="button" data-lang="Hindi">Hindi</button>
         <button class="chip" type="button" data-lang="Korean">Korean</button>
         <button class="chip" type="button" data-lang="Japanese">Japanese</button>
-        <select id="genreSel" aria-label="জঁর বাছুন">
-          <option value="all">সব জঁর</option>
+        <select id="genreSel" data-i18n-aria="genreAria" aria-label="Choose genre">
+          <option value="all" data-i18n="allGenres">All Genres</option>
         </select>
-        <select id="sortSel" aria-label="সাজান">
-          <option value="pop">জনপ্রিয়তা অনুযায়ী</option>
-          <option value="rating">রেটিং — বেশি থেকে কম</option>
-          <option value="new">নতুন আগে</option>
-          <option value="old">পুরনো আগে</option>
-          <option value="az">নাম (A–Z)</option>
+        <select id="sortSel" data-i18n-aria="sortAria" aria-label="Sort">
+          <option value="pop" data-i18n="sortPop">By popularity</option>
+          <option value="rating" data-i18n="sortRating">Rating — high to low</option>
+          <option value="new" data-i18n="sortNew">Newest first</option>
+          <option value="old" data-i18n="sortOld">Oldest first</option>
+          <option value="az" data-i18n="sortAZ">Name (A–Z)</option>
         </select>
       </div>
     </div>
@@ -285,10 +285,10 @@
     <div class="apibar" id="apibar">
       <div class="apibar-in">
         <span class="dot" id="apiDot"></span>
-        <span id="apiStatus"><b>লাইভ API</b> — ওপেন-সোর্স API থেকে মুভি আসছে…</span>
+        <span id="apiStatus"><b>Live API</b> — loading movies from open-source APIs…</span>
         <span class="sp"></span>
-        <span>সোর্স: <a href="https://github.com/theapache64/top250" target="_blank" rel="noopener">GitHub · Top 250</a> · <a href="https://github.com/janaipakos/ghibliapi" target="_blank" rel="noopener">GitHub · Ghibli API</a> · <a href="https://github.com/vega/vega-datasets" target="_blank" rel="noopener">GitHub · Vega Movies</a> · <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">TMDB</a> · <a href="https://v3-cinemeta.strem.io/" target="_blank" rel="noopener">Cinemeta</a></span>
-        <button class="api-refresh" type="button" id="apiRefresh">↻ API রিফ্রেশ</button>
+        <span data-i18n="sources">Sources:</span> <a href="https://github.com/theapache64/top250" target="_blank" rel="noopener">GitHub · Top 250</a> · <a href="https://github.com/janaipakos/ghibliapi" target="_blank" rel="noopener">GitHub · Ghibli API</a> · <a href="https://github.com/vega/vega-datasets" target="_blank" rel="noopener">GitHub · Vega Movies</a> · <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">TMDB</a> · <a href="https://v3-cinemeta.strem.io/" target="_blank" rel="noopener">Cinemeta</a></span>
+        <button class="api-refresh" type="button" id="apiRefresh" data-i18n="apiRefresh">↻ Refresh API</button>
       </div>
     </div>
 
@@ -297,49 +297,55 @@
     <footer class="site">
       <div class="foot-in">
         <span class="brand">SWEET<b style="color:var(--accent2)">MOVIES</b></span>
-        <span>লাইভ ডেটা ওপেন-সোর্স API থেকে — <a href="https://github.com/theapache64/top250" target="_blank" rel="noopener" style="color:var(--accent2)">GitHub Top 250</a> ও <a href="https://github.com/janaipakos/ghibliapi" target="_blank" rel="noopener" style="color:var(--accent2)">Ghibli API</a> ও <a href="https://github.com/vega/vega-datasets" target="_blank" rel="noopener" style="color:var(--accent2)">Vega Movies</a> ও <a href="https://www.themoviedb.org/" target="_blank" rel="noopener" style="color:var(--accent2)">TMDB</a> ও <a href="https://v3-cinemeta.strem.io/" target="_blank" rel="noopener" style="color:var(--accent2)">Cinemeta</a> • সব ট্রেইলার YouTube-এ অফিসিয়াল চ্যানেলের এমবেড</span>
-        <span>মাই লিস্ট ও Continue Watching এই সেশনেই থাকে — পেজ রিফ্রেশ হলে মুছে যাবে।</span>
+        <span id="footSources">Live data from open-source APIs — <a href="https://github.com/theapache64/top250" target="_blank" rel="noopener" style="color:var(--accent2)">GitHub Top 250</a> and <a href="https://github.com/janaipakos/ghibliapi" target="_blank" rel="noopener" style="color:var(--accent2)">Ghibli API</a> and <a href="https://github.com/vega/vega-datasets" target="_blank" rel="noopener" style="color:var(--accent2)">Vega Movies</a> and <a href="https://www.themoviedb.org/" target="_blank" rel="noopener" style="color:var(--accent2)">TMDB</a> and <a href="https://v3-cinemeta.strem.io/" target="_blank" rel="noopener" style="color:var(--accent2)">Cinemeta</a> • All trailers are official YouTube channel embeds</span>
+        <span id="footSession">My List &amp; Continue Watching last for this session only — they clear on refresh.</span>
       </div>
     </footer>
 
-    <nav class="bottom" aria-label="মোবাইল">
-      <button type="button" data-tab="home" class="on"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>হোম</button>
-      <button type="button" data-tab="movies"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M7 5v14M17 5v14"/></svg>মুভি</button>
-      <button type="button" data-tab="anime"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>অ্যানিমে</button>
-      <button type="button" data-tab="mylist"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg>মাই লিস্ট</button>
+    <nav class="bottom" data-i18n-aria="mobileNav" aria-label="Mobile">
+      <button type="button" data-tab="home" class="on"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span data-i18n="navHome">Home</span></button>
+      <button type="button" data-tab="movies"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M7 5v14M17 5v14"/></svg><span data-i18n="navMovies">Movies</span></button>
+      <button type="button" data-tab="anime"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg><span data-i18n="navAnime">Anime</span></button>
+      <button type="button" data-tab="mylist"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg><span data-i18n="navMylist">My List</span></button>
     </nav>
 
-    <div class="scrim" id="detailScrim" role="dialog" aria-modal="true" aria-label="মুভির বিস্তারিত">
+    <div class="scrim" id="detailScrim" role="dialog" aria-modal="true" data-i18n-aria="detailAria" aria-label="Movie details">
       <div class="modal" id="detailModal"></div>
     </div>
 
-    <div class="scrim" id="trailerScrim" role="dialog" aria-modal="true" aria-label="ট্রেইলার প্লেয়ার">
+    <div class="scrim" id="trailerScrim" role="dialog" aria-modal="true" data-i18n-aria="trailerAria" aria-label="Trailer player">
       <div class="modal trailer-modal">
         <div class="trailer-frame" id="trailerFrame"></div>
         <div class="trailer-cap">
           <b id="trailerTitle"></b>
           <span style="display:flex;gap:1rem;align-items:center">
-            <a id="trailerYt" href="#" target="_blank" rel="noopener">YouTube-এ খুলুন ↗</a>
-            <button class="btn btn-ghost" type="button" id="trailerClose" style="padding:.4rem 1rem">বন্ধ করুন</button>
+            <a id="trailerYt" href="#" target="_blank" rel="noopener" data-i18n="trailerOpenYt">Open on YouTube ↗</a>
+            <button class="btn btn-ghost" type="button" id="trailerClose" style="padding:.4rem 1rem" data-i18n="closeBtn">Close</button>
           </span>
         </div>
       </div>
     </div>
 
-    <div class="scrim" id="settingsScrim" role="dialog" aria-modal="true" aria-label="সেটিংস">
+    <div class="scrim" id="settingsScrim" role="dialog" aria-modal="true" data-i18n-aria="settingsAria" aria-label="Settings">
       <div class="modal" style="max-width:560px">
         <div class="modal-body" style="padding:1.4rem clamp(1rem,3vw,1.8rem) 1.6rem">
-          <h2 class="disp" style="margin:.2rem 0 .6rem;font-size:1.5rem">সেটিংস — TMDB API</h2>
-          <p class="set-note">TMDB key বসালে প্রতিদিন নতুন মুভি আসবে — <b>Trending This Week</b>, <b>Trending Today</b>, <b>Now Playing</b>, <b>Coming Soon</b>, <b>Popular</b> আর <b>Top Rated</b> রো TMDB থেকে ফ্রেশ লোড হবে। Key ছাড়া বিল্ট-ইন + ওপেন-সোর্স ক্যাটালগই চলবে।</p>
+          <h2 class="disp" style="margin:.2rem 0 .6rem;font-size:1.5rem" data-i18n="settingsTitle">Settings — TMDB API</h2>
+          <p class="set-note" style="font-weight:700;margin:.2rem 0 .8rem">Movie Lover 'SONET'</p>
+          <div style="display:flex;gap:.5rem;align-items:center;margin-bottom:.9rem;flex-wrap:wrap">
+            <span style="font-weight:700" data-i18n="langLabel">Language</span>
+            <button class="chip lang-toggle" type="button" data-uilang="en">English</button>
+            <button class="chip lang-toggle" type="button" data-uilang="bn">বাংলা</button>
+          </div>
+          <p class="set-note" data-i18n-html="settingsNote">TMDB is built in — new movies load daily: <b>Trending This Week</b>, <b>Trending Today</b>, <b>Now Playing</b>, <b>Coming Soon</b>, <b>Popular</b> and <b>Top Rated</b> rows refresh from TMDB. You can also paste your own key below to use your own TMDB account.</p>
           <label for="tmdbKeyInput" style="font-weight:700">TMDB API Key / Read Access Token</label>
-          <input id="tmdbKeyInput" class="key-input" type="password" placeholder="এখানে key পেস্ট করুন" autocomplete="off" />
+          <input id="tmdbKeyInput" class="key-input" type="password" data-i18n-ph="keyPh" placeholder="Paste your key here" autocomplete="off" />
           <div style="display:flex;gap:.6rem;flex-wrap:wrap">
-            <button class="btn btn-red" type="button" id="tmdbKeySave">সংরক্ষণ করুন</button>
-            <button class="btn btn-ghost" type="button" id="tmdbKeyClear">Key মুছুন</button>
-            <button class="btn btn-ghost" type="button" id="settingsClose">বন্ধ করুন</button>
+            <button class="btn btn-red" type="button" id="tmdbKeySave" data-i18n="keySave">Save</button>
+            <button class="btn btn-ghost" type="button" id="tmdbKeyClear" data-i18n="keyClear">Remove Key</button>
+            <button class="btn btn-ghost" type="button" id="settingsClose" data-i18n="closeBtn">Close</button>
           </div>
           <p id="tmdbKeyStatus" class="set-note" style="margin-top:.8rem"></p>
-          <p class="set-note">Key পেতে: <a href="https://www.themoviedb.org/settings/api" target="_blank" rel="noopener">themoviedb.org → Settings → API</a> — ফ্রি অ্যাকাউন্ট খুলে <b>v4 Read Access Token</b> বা <b>v3 API Key</b> কপি করুন। Key শুধু এই ব্রাউজারেই থাকে (localStorage) — কোথাও পাঠানো হয় না, GitHub রিপোতেও যায় না।</p>
+          <p class="set-note" data-i18n-html="keyGet">Get a key: <a href="https://www.themoviedb.org/settings/api" target="_blank" rel="noopener">themoviedb.org → Settings → API</a> — create a free account and copy your <b>v4 Read Access Token</b> or <b>v3 API Key</b>. Your own key stays in this browser only (localStorage) — it is never sent anywhere or to the GitHub repo.</p>
         </div>
       </div>
     </div>
@@ -347,97 +353,231 @@
     <div class="toast" id="toast" role="status"></div>
 
     <script>
+    /* ---------- language (default English, toggle in Settings) ---------- */
+    var LANG_LS = "sweetmovies_lang";
+    var LANG = "en";
+    try{ var _l = localStorage.getItem(LANG_LS); if(_l==="bn" || _l==="en") LANG = _l; }catch(e){}
+    var STR = {
+      en: {
+        docTitle:"Sweet Movies — Catalog & Trailers", navHome:"Home", navMovies:"Movies", navAnime:"Anime", navMylist:"My List",
+        searchPh:"Search movies… e.g. Inception", settingsAria:"Settings — TMDB API", mobileNav:"Mobile",
+        heroTag:"★ This Week's Highlight", heroMatch:"85% Match",
+        heroLead:"Paul Atreides rides a sandworm across the deserts of Arrakis with the Fremen — an epic journey of revenge against the Harkonnens and facing his own destiny.",
+        heroTrailer:"▶ Watch Trailer", heroDetails:"ⓘ Details",
+        filterLang:"Language:", chipAll:"All", chipBengali:"Bengali", allGenres:"All Genres",
+        sortPop:"By popularity", sortRating:"Rating — high to low", sortNew:"Newest first", sortOld:"Oldest first", sortAZ:"Name (A–Z)",
+        genreAria:"Choose genre", sortAria:"Sort",
+        apiLoading:"<b>Live API</b> — loading movies from open-source APIs…", apiRefresh:"↻ Refresh API", sources:"Sources:",
+        footSources:'Live data from open-source APIs — <a href="https://github.com/theapache64/top250" target="_blank" rel="noopener" style="color:var(--accent2)">GitHub Top 250</a> and <a href="https://github.com/janaipakos/ghibliapi" target="_blank" rel="noopener" style="color:var(--accent2)">Ghibli API</a> and <a href="https://github.com/vega/vega-datasets" target="_blank" rel="noopener" style="color:var(--accent2)">Vega Movies</a> and <a href="https://www.themoviedb.org/" target="_blank" rel="noopener" style="color:var(--accent2)">TMDB</a> and <a href="https://v3-cinemeta.strem.io/" target="_blank" rel="noopener" style="color:var(--accent2)">Cinemeta</a> • All trailers are official YouTube channel embeds',
+        footSession:"My List &amp; Continue Watching last for this session only — they clear on refresh.",
+        trailerOpenYt:"Open on YouTube ↗", closeBtn:"Close", detailAria:"Movie details", trailerAria:"Trailer player",
+        settingsTitle:"Settings — TMDB API",
+        settingsNote:"TMDB is built in — new movies load daily: <b>Trending This Week</b>, <b>Trending Today</b>, <b>Now Playing</b>, <b>Coming Soon</b>, <b>Popular</b> and <b>Top Rated</b> rows refresh from TMDB. You can also paste your own key below to use your own TMDB account.",
+        keyPh:"Paste your key here", keySave:"Save", keyClear:"Remove Key",
+        keyGet:'Get a key: <a href="https://www.themoviedb.org/settings/api" target="_blank" rel="noopener">themoviedb.org → Settings → API</a> — create a free account and copy your <b>v4 Read Access Token</b> or <b>v3 API Key</b>. Your own key stays in this browser only (localStorage) — it is never sent anywhere or to the GitHub repo.',
+        langLabel:"Language", movieLover:"Movie Lover 'SONET'",
+        keyStatusOwn:"✓ Your own TMDB key is saved — new movies arrive daily.",
+        keyStatusBuiltin:"✓ TMDB is built in — new movies arrive daily. Paste your own key below to use your account instead.",
+        keyStatusNone:"No TMDB key yet — built-in + open-source catalog only.",
+        keyStatusEmpty:"Key is empty — paste a key first.", keyStatusChecking:"Checking key…",
+        keyStatusSaved:"✓ TMDB connected with your key — new movies arrive daily.",
+        keyStatusBad:"✕ Key doesn't work — check the v4 Read Access Token or v3 API Key was copied correctly.",
+        toastConnected:"TMDB connected", toastKeyRemoved:"TMDB key removed",
+        toastFinding:"Finding trailer…", toastNoTrailer:"No official trailer found for this movie",
+        toastNoTrailerLink:"No official trailer link in API data for this title",
+        listAdd:"“{t}” added to My List", listRemove:"“{t}” removed from My List",
+        listIn:"✓ In My List", listAddBtn:"+ My List",
+        myListTitle:"My List", myListEmpty:"<b>Your list is empty</b>Open any movie's details and tap “Add to My List” to save it here.",
+        searchTitle:"Search Results", searchNone:"<b>Nothing found</b>Try a different spelling, or clear the language/genre filters.",
+        animeTitle:"Anime", animeSub:"Japanese Animation", popMovies:"Popular Movies", allMovies:"All Movies",
+        cwSub:"Pick up where you left off",
+        rowTrendingNowSub:"What everyone's watching", rowTopRatedSub:"Highest rated",
+        rowAction:"Action", rowScifi:"Sci-Fi & Adventure", rowDrama:"Drama", rowBollywood:"Bollywood & Bangla", rowBollywoodSub:"Hindi • Bengali", rowAnime:"Anime",
+        tmdbSubWeek:"TMDB — Trending this week", tmdbSubNow:"TMDB — In cinemas now", tmdbSubDay:"TMDB — Trending today",
+        tmdbSubSoon:"TMDB — Coming soon", tmdbSubPop:"TMDB — Popular", tmdbSubTop:"TMDB — Top rated",
+        modalDirector:"Director", modalCast:"Cast", modalLang:"Language", modalRuntime:"Runtime", modalSource:"Data source",
+        modalImdbPage:"View page ↗", modalImdbRating:"IMDb Rating",
+        watchTitle:"Where to Watch (US)", watchRentBuy:"Rent/Buy:", watchTmdb:"See on TMDB ↗",
+        match:"Match", trailerBtn:"▶ Trailer", trailerWord:"Trailer", posterAlt:"poster", detailsAria:"details", trailerAgainAria:"watch trailer again", closeAria:"Close",
+        voice:"(voice)", ghibliCast:"Voice cast — Studio Ghibli", ghibliDesc:"A Studio Ghibli anime film.", openSrc:"open-source",
+        tmdbNoDesc:"No synopsis available on TMDB.", apiNoDesc:"No synopsis available in the API.",
+        tmdbNote:" • TMDB connected — new movies daily",
+        apiConnected:"<b>Live API connected</b> — <b>{n}</b> more titles from {s} • Total catalog <b>{t}</b>{u}",
+        apiDown:"<b>API unavailable</b> — check your internet connection; the built-in catalog keeps running.",
+        apiKeyBad:"<b>TMDB key isn't working</b> — check the key in Settings (⚙️); the rest of the catalog keeps running.",
+        apiRefreshed:"API refreshed — {n} titles total", apiNotFound:"API unavailable — built-in catalog still running", apiReloading:"Reloading API…"
+      },
+      bn: {
+        docTitle:"Sweet Movies — ক্যাটালগ ও ট্রেইলার", navHome:"হোম", navMovies:"মুভি", navAnime:"অ্যানিমে", navMylist:"মাই লিস্ট",
+        searchPh:"মুভি খুঁজুন… যেমন Inception", settingsAria:"সেটিংস — TMDB API", mobileNav:"মোবাইল",
+        heroTag:"★ এই সপ্তাহের হাইলাইট", heroMatch:"৮৫% ম্যাচ",
+        heroLead:"পল অ্যাট্রেইডিস ফ্রেমেনদের সঙ্গে হাত মিলিয়ে আরাকিসের মরুভূমিতে হাঁটে স্যান্ডওয়ার্মের পিঠে — হারকোনেনদের বিরুদ্ধে প্রতিশোধ আর নিজের ভাগ্যের মুখোমুখি হওয়ার মহাকাব্যিক যাত্রা।",
+        heroTrailer:"▶ ট্রেইলার দেখুন", heroDetails:"ⓘ বিস্তারিত",
+        filterLang:"ভাষা:", chipAll:"সব", chipBengali:"বাংলা", allGenres:"সব জঁর",
+        sortPop:"জনপ্রিয়তা অনুযায়ী", sortRating:"রেটিং — বেশি থেকে কম", sortNew:"নতুন আগে", sortOld:"পুরনো আগে", sortAZ:"নাম (A–Z)",
+        genreAria:"জঁর বাছুন", sortAria:"সাজান",
+        apiLoading:"<b>লাইভ API</b> — ওপেন-সোর্স API থেকে মুভি আসছে…", apiRefresh:"↻ API রিফ্রেশ", sources:"সোর্স:",
+        footSources:'লাইভ ডেটা ওপেন-সোর্স API থেকে — <a href="https://github.com/theapache64/top250" target="_blank" rel="noopener" style="color:var(--accent2)">GitHub Top 250</a> ও <a href="https://github.com/janaipakos/ghibliapi" target="_blank" rel="noopener" style="color:var(--accent2)">Ghibli API</a> ও <a href="https://github.com/vega/vega-datasets" target="_blank" rel="noopener" style="color:var(--accent2)">Vega Movies</a> ও <a href="https://www.themoviedb.org/" target="_blank" rel="noopener" style="color:var(--accent2)">TMDB</a> ও <a href="https://v3-cinemeta.strem.io/" target="_blank" rel="noopener" style="color:var(--accent2)">Cinemeta</a> • সব ট্রেইলার YouTube-এ অফিসিয়াল চ্যানেলের এমবেড',
+        footSession:"মাই লিস্ট ও Continue Watching এই সেশনেই থাকে — পেজ রিফ্রেশ হলে মুছে যাবে।",
+        trailerOpenYt:"YouTube-এ খুলুন ↗", closeBtn:"বন্ধ করুন", detailAria:"মুভির বিস্তারিত", trailerAria:"ট্রেইলার প্লেয়ার",
+        settingsTitle:"সেটিংস — TMDB API",
+        settingsNote:"TMDB বিল্ট-ইন আছে — প্রতিদিন নতুন মুভি আসবে: <b>Trending This Week</b>, <b>Trending Today</b>, <b>Now Playing</b>, <b>Coming Soon</b>, <b>Popular</b> আর <b>Top Rated</b> রো TMDB থেকে ফ্রেশ লোড হবে। নিজের TMDB অ্যাকাউন্ট ব্যবহার করতে চাইলে নিচে নিজের key বসাতে পারেন।",
+        keyPh:"এখানে key পেস্ট করুন", keySave:"সংরক্ষণ করুন", keyClear:"Key মুছুন",
+        keyGet:'Key পেতে: <a href="https://www.themoviedb.org/settings/api" target="_blank" rel="noopener">themoviedb.org → Settings → API</a> — ফ্রি অ্যাকাউন্ট খুলে <b>v4 Read Access Token</b> বা <b>v3 API Key</b> কপি করুন। নিজের Key শুধু এই ব্রাউজারেই থাকে (localStorage) — কোথাও পাঠানো হয় না, GitHub রিপোতেও যায় না।',
+        langLabel:"ভাষা", movieLover:"Movie Lover 'SONET'",
+        keyStatusOwn:"✓ নিজের TMDB key বসানো আছে — প্রতিদিন নতুন মুভি আসবে।",
+        keyStatusBuiltin:"✓ TMDB বিল্ট-ইন আছে — প্রতিদিন নতুন মুভি আসবে। নিজের অ্যাকাউন্ট ব্যবহার করতে নিচে নিজের key বসান।",
+        keyStatusNone:"এখনো key বসানো হয়নি — বিল্ট-ইন + ওপেন-সোর্স ক্যাটালগই চলবে।",
+        keyStatusEmpty:"Key খালি — আগে key পেস্ট করুন।", keyStatusChecking:"Key যাচাই করা হচ্ছে…",
+        keyStatusSaved:"✓ নিজের key দিয়ে TMDB সংযুক্ত — প্রতিদিন নতুন মুভি আসবে।",
+        keyStatusBad:"✕ Key কাজ করছে না — v4 Read Access Token বা v3 API Key ঠিকমতো কপি হয়েছে কিনা দেখুন।",
+        toastConnected:"TMDB সংযুক্ত হয়েছে", toastKeyRemoved:"TMDB key মুছে ফেলা হয়েছে",
+        toastFinding:"ট্রেইলার খুঁজছি…", toastNoTrailer:"এই মুভির অফিসিয়াল ট্রেইলার পাওয়া যায়নি",
+        toastNoTrailerLink:"এই টাইটেলের অফিসিয়াল ট্রেইলার লিংক API ডেটায় নেই",
+        listAdd:"“{t}” মাই লিস্টে যোগ হয়েছে", listRemove:"“{t}” মাই লিস্ট থেকে সরানো হয়েছে",
+        listIn:"✓ লিস্টে আছে", listAddBtn:"＋ মাই লিস্ট",
+        myListTitle:"মাই লিস্ট", myListEmpty:"<b>লিস্ট এখনো খালি</b>যেকোনো সিনেমার বিস্তারিত খুলে “মাই লিস্টে যোগ করুন” চাপলেই এখানে জমা হবে।",
+        searchTitle:"খোঁজের ফলাফল", searchNone:"<b>কিছু পাওয়া যায়নি</b>নামের বানান বদলে, ভাষা বা জঁর ফিল্টার সরিয়ে আবার চেষ্টা করুন।",
+        animeTitle:"অ্যানিমে", animeSub:"জাপানি অ্যানিমেশন", popMovies:"জনপ্রিয় মুভি", allMovies:"সব মুভি",
+        cwSub:"ট্রেইলার যেখানে ছেড়েছিলেন",
+        rowTrendingNowSub:"সবাই যা দেখছে", rowTopRatedSub:"সর্বোচ্চ রেটিং",
+        rowAction:"অ্যাকশন", rowScifi:"Sci-Fi ও Adventure", rowDrama:"ড্রামা", rowBollywood:"বলিউড ও বাংলা", rowBollywoodSub:"Hindi • বাংলা", rowAnime:"অ্যানিমে",
+        tmdbSubWeek:"TMDB — এই সপ্তাহের ট্রেন্ডিং", tmdbSubNow:"TMDB — এখন সিনেমা হলে", tmdbSubDay:"TMDB — আজকের ট্রেন্ডিং",
+        tmdbSubSoon:"TMDB — শীঘ্রই আসছে", tmdbSubPop:"TMDB — জনপ্রিয়", tmdbSubTop:"TMDB — সর্বোচ্চ রেটিং",
+        modalDirector:"পরিচালক", modalCast:"অভিনয়ে", modalLang:"ভাষা", modalRuntime:"রানটাইম", modalSource:"ডেটা সোর্স",
+        modalImdbPage:"পেজ দেখুন ↗", modalImdbRating:"IMDb রেটিং",
+        watchTitle:"কোথায় দেখবেন (US)", watchRentBuy:"ভাড়া/কিনুন:", watchTmdb:"TMDB-তে দেখুন ↗",
+        match:"ম্যাচ", trailerBtn:"▶ ট্রেইলার", trailerWord:"ট্রেইলার", posterAlt:"পোস্টার", detailsAria:"বিস্তারিত", trailerAgainAria:"ট্রেইলার আবার দেখুন", closeAria:"বন্ধ করুন",
+        voice:"(কণ্ঠ)", ghibliCast:"কণ্ঠশিল্পী — Studio Ghibli", ghibliDesc:"Studio Ghibli-র অ্যানিমে ছবি।", openSrc:"ওপেন-সোর্স",
+        tmdbNoDesc:"এই মুভির বিবরণ TMDB-তে পাওয়া যায়নি।", apiNoDesc:"এই মুভির বিবরণ API-তে পাওয়া যায়নি।",
+        tmdbNote:" • TMDB সংযুক্ত — প্রতিদিন নতুন মুভি আসছে",
+        apiConnected:"<b>লাইভ API সংযুক্ত</b> — {s} থেকে আরও <b>{n}</b>টি টাইটেল যোগ হয়েছে • মোট ক্যাটালগ <b>{t}</b>টি{u}",
+        apiDown:"<b>API পাওয়া যাচ্ছে না</b> — ইন্টারনেট সংযোগ চেক করুন; বিল্ট-ইন ক্যাটালগ চলছেই।",
+        apiKeyBad:"<b>TMDB key কাজ করছে না</b> — সেটিংস (⚙️) থেকে key ঠিকমতো বসানো হয়েছে কিনা দেখুন; বাকি ক্যাটালগ চলছে।",
+        apiRefreshed:"API রিফ্রেশ হয়েছে — মোট {n}টি টাইটেল", apiNotFound:"API পাওয়া যায়নি — বিল্ট-ইন ক্যাটালগ চলছে", apiReloading:"API আবার লোড হচ্ছে…"
+      }
+    };
+    function t(k){ var d = STR[LANG] || STR.en; return (d[k] !== undefined ? d[k] : (STR.en[k] !== undefined ? STR.en[k] : k)); }
+    function langName(l){ if(LANG==="bn") return l; return (l==="বাংলা" ? "Bengali" : l); }
+    var GENRE_BN = {Action:"অ্যাকশন", Adventure:"অ্যাডভেঞ্চার", "Sci-Fi":"সাই-ফাই", Drama:"ড্রামা", Thriller:"থ্রিলার", Crime:"অপরাধ", Romance:"রোমান্স", Horror:"হরর", Comedy:"কমেডি", Sport:"খেলাধুলা", Anime:"অ্যানিমে", Fantasy:"ফ্যান্টাসি"};
+    function genreName(g){ return (LANG==="bn" && GENRE_BN[g]) ? GENRE_BN[g] : g; }
+    function cntMovies(n){ return LANG==="bn" ? bnNum(n)+"টি সিনেমা" : n+" movies"; }
+    function cntFound(n){ return LANG==="bn" ? bnNum(n)+"টি পাওয়া গেছে" : n+" found"; }
+    function setLang(l){
+      LANG = (l==="bn" ? "bn" : "en");
+      try{ localStorage.setItem(LANG_LS, LANG); }catch(e){}
+      applyI18n();
+      render();
+      if(detailOpenId && detailScrim.classList.contains("open")) openDetail(detailOpenId);
+    }
+    function applyI18n(){
+      document.documentElement.lang = LANG;
+      document.title = t("docTitle");
+      document.querySelectorAll("[data-i18n]").forEach(function(el){ el.textContent = t(el.getAttribute("data-i18n")); });
+      document.querySelectorAll("[data-i18n-html]").forEach(function(el){ el.innerHTML = t(el.getAttribute("data-i18n-html")); });
+      document.querySelectorAll("[data-i18n-ph]").forEach(function(el){ el.setAttribute("placeholder", t(el.getAttribute("data-i18n-ph"))); });
+      document.querySelectorAll("[data-i18n-aria]").forEach(function(el){ el.setAttribute("aria-label", t(el.getAttribute("data-i18n-aria"))); });
+      document.querySelectorAll("[data-uilang]").forEach(function(b){ b.classList.toggle("on", b.getAttribute("data-uilang")===LANG); });
+      var hd = document.getElementById("heroDur"); if(hd) hd.textContent = fmtMins(166);
+      var hb = document.getElementById("heroListBtn"); if(hb) hb.textContent = myList.has("dune2") ? t("listIn") : t("listAddBtn");
+      var fs = document.getElementById("footSources"); if(fs) fs.innerHTML = t("footSources");
+      var fss = document.getElementById("footSession"); if(fss) fss.innerHTML = t("footSession");
+      if(typeof renderStatus === "function") renderStatus(); else { var as = document.getElementById("apiStatus"); if(as && !apiLoaded) as.innerHTML = t("apiLoading"); }
+      if(typeof rebuildGenres === "function") rebuildGenres();
+      if(typeof refreshKeyStatus === "function") refreshKeyStatus();
+    }
+
     var MOVIES = [
-      {id:"dune2", t:"Dune: Part Two", y:2024, r:8.5, dur:"২ ঘণ্টা ৪৬ মিনিট", lang:"English", g:["Sci-Fi","Adventure"], dir:"Denis Villeneuve",
+      {id:"dune2", t:"Dune: Part Two", y:2024, r:8.5, durMin:166, lang:"English", g:["Sci-Fi","Adventure"], dir:"Denis Villeneuve",
        cast:"Timothée Chalamet, Zendaya, Rebecca Ferguson, Austin Butler", pop:99, img:"https://upload.wikimedia.org/wikipedia/en/5/52/Dune_Part_Two_poster.jpeg", yt:"Way9Dexny3w",
-       s:"পল অ্যাট্রেইডিস ফ্রেমেনদের সঙ্গে হাত মিলিয়ে আরাকিসের মরুভূমিতে স্যান্ডওয়ার্মের পিঠে চড়ে — হারকোনেনদের বিরুদ্ধে প্রতিশোধ আর নিজের ভাগ্যের মুখোমুখি হওয়ার মহাকাব্যিক যাত্রা।"},
-      {id:"oppenheimer", t:"Oppenheimer", y:2023, r:8.3, dur:"৩ ঘণ্টা", lang:"English", g:["Drama","Thriller"], dir:"Christopher Nolan",
+       s:"Paul Atreides rides a sandworm across the deserts of Arrakis with the Fremen — an epic journey of revenge against the Harkonnens and facing his own destiny.", sb:"পল অ্যাট্রেইডিস ফ্রেমেনদের সঙ্গে হাত মিলিয়ে আরাকিসের মরুভূমিতে স্যান্ডওয়ার্মের পিঠে চড়ে — হারকোনেনদের বিরুদ্ধে প্রতিশোধ আর নিজের ভাগ্যের মুখোমুখি হওয়ার মহাকাব্যিক যাত্রা।"},
+      {id:"oppenheimer", t:"Oppenheimer", y:2023, r:8.3, durMin:180, lang:"English", g:["Drama","Thriller"], dir:"Christopher Nolan",
        cast:"Cillian Murphy, Emily Blunt, Matt Damon, Robert Downey Jr.", pop:95, img:"https://upload.wikimedia.org/wikipedia/en/4/4a/Oppenheimer_%28film%29.jpg", yt:"uYPbbksJxIg",
-       s:"পরমাণু বোমার জনক জে. রবার্ট ওপেনহাইমারের জীবন — ম্যানহাটন প্রজেক্টের উত্তেজনা, সাফল্য আর তার পরের নৈতিক ও রাজনৈতিক মূল্য।"},
-      {id:"endgame", t:"Avengers: Endgame", y:2019, r:8.4, dur:"৩ ঘণ্টা ১ মিনিট", lang:"English", g:["Action","Adventure"], dir:"Anthony & Joe Russo",
+       s:"The life of J. Robert Oppenheimer, father of the atomic bomb — the Manhattan Project's drive, its triumph, and the moral and political price that followed.", sb:"পরমাণু বোমার জনক জে. রবার্ট ওপেনহাইমারের জীবন — ম্যানহাটন প্রজেক্টের উত্তেজনা, সাফল্য আর তার পরের নৈতিক ও রাজনৈতিক মূল্য।"},
+      {id:"endgame", t:"Avengers: Endgame", y:2019, r:8.4, durMin:181, lang:"English", g:["Action","Adventure"], dir:"Anthony & Joe Russo",
        cast:"Robert Downey Jr., Chris Evans, Scarlett Johansson, Mark Ruffalo", pop:97, img:"https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_.jpg", yt:"TcMBFSGVi1c",
-       s:"থানোসের ধ্বংসযজ্ঞের পর বেঁচে থাকা অ্যাভেঞ্জাররা শেষবারের মতো এক হয় — হারানো সবাইকে ফিরিয়ে আনার জন্য সময়যাত্রার ঝুঁকিপূর্ণ মিশন।"},
-      {id:"johnwick4", t:"John Wick: Chapter 4", y:2023, r:7.7, dur:"২ ঘণ্টা ৪৯ মিনিট", lang:"English", g:["Action","Thriller"], dir:"Chad Stahelski",
+       s:"After Thanos' devastation, the surviving Avengers reunite for one last stand — a risky journey through time to bring back everyone they lost.", sb:"থানোসের ধ্বংসযজ্ঞের পর বেঁচে থাকা অ্যাভেঞ্জাররা শেষবারের মতো এক হয় — হারানো সবাইকে ফিরিয়ে আনার জন্য সময়যাত্রার ঝুঁকিপূর্ণ মিশন।"},
+      {id:"johnwick4", t:"John Wick: Chapter 4", y:2023, r:7.7, durMin:169, lang:"English", g:["Action","Thriller"], dir:"Chad Stahelski",
        cast:"Keanu Reeves, Donnie Yen, Bill Skarsgård, Ian McShane", pop:93, img:"https://upload.wikimedia.org/wikipedia/en/d/d0/John_Wick_-_Chapter_4_promotional_poster.jpg", yt:"qEVUtrk8_B4",
-       s:"হাই টেবিলের কবল থেকে মুক্তির পথ খুঁজতে জন উইক ওসাকা থেকে বার্লিন আর প্যারিস পর্যন্ত লড়ে — প্রতিটি ধাপে আরও ভয়ংকর প্রতিপক্ষ।"},
-      {id:"avatar2", t:"Avatar: The Way of Water", y:2022, r:7.6, dur:"৩ ঘণ্টা ১২ মিনিট", lang:"English", g:["Sci-Fi","Adventure"], dir:"James Cameron",
+       s:"Hunting a way out from under the High Table, John Wick fights from Osaka to Berlin and Paris — deadlier enemies at every step.", sb:"হাই টেবিলের কবল থেকে মুক্তির পথ খুঁজতে জন উইক ওসাকা থেকে বার্লিন আর প্যারিস পর্যন্ত লড়ে — প্রতিটি ধাপে আরও ভয়ংকর প্রতিপক্ষ।"},
+      {id:"avatar2", t:"Avatar: The Way of Water", y:2022, r:7.6, durMin:192, lang:"English", g:["Sci-Fi","Adventure"], dir:"James Cameron",
        cast:"Sam Worthington, Zoe Saldaña, Sigourney Weaver, Kate Winslet", pop:91, img:"https://upload.wikimedia.org/wikipedia/en/5/54/Avatar_The_Way_of_Water_poster.jpg", yt:"d9MyW72ELq0",
-       s:"প্যান্ডোরায় জেক সালি ও নেইতিরির পরিবার — পুরনো শত্রু ফিরে এলে তাদের আশ্রয় নিতে হয় সমুদ্র-উপজাতি মেটকায়িনাদের কাছে।"},
-      {id:"pathaan", t:"Pathaan", y:2023, r:6.0, dur:"২ ঘণ্টা ২৬ মিনিট", lang:"Hindi", g:["Action","Thriller"], dir:"Siddharth Anand",
+       s:"On Pandora, Jake Sully and Neytiri's family must take shelter with the ocean clan of the Metkayina when an old enemy returns.", sb:"প্যান্ডোরায় জেক সালি ও নেইতিরির পরিবার — পুরনো শত্রু ফিরে এলে তাদের আশ্রয় নিতে হয় সমুদ্র-উপজাতি মেটকায়িনাদের কাছে।"},
+      {id:"pathaan", t:"Pathaan", y:2023, r:6.0, durMin:146, lang:"Hindi", g:["Action","Thriller"], dir:"Siddharth Anand",
        cast:"Shah Rukh Khan, Deepika Padukone, John Abraham", pop:90, img:"https://upload.wikimedia.org/wikipedia/en/c/c3/Pathaan_film_poster.jpg", yt:"vqu4z34wENw",
-       s:"ভারতের ওপর ভয়াবহ হামলার পরিকল্পনা রুখতে নির্বাসিত RAW এজেন্ট পাঠানকে ফিরিয়ে আনা হয় — মুখোমুখি হতে হয় প্রাক্তন এজেন্ট জিমের।"},
-      {id:"parasite", t:"Parasite", y:2019, r:8.5, dur:"২ ঘণ্টা ১২ মিনিট", lang:"Korean", g:["Thriller","Drama"], dir:"Bong Joon Ho",
+       s:"To stop a devastating attack on India, exiled RAW agent Pathaan is brought back — and must face Jim, a former agent turned rogue.", sb:"ভারতের ওপর ভয়াবহ হামলার পরিকল্পনা রুখতে নির্বাসিত RAW এজেন্ট পাঠানকে ফিরিয়ে আনা হয় — মুখোমুখি হতে হয় প্রাক্তন এজেন্ট জিমের।"},
+      {id:"parasite", t:"Parasite", y:2019, r:8.5, durMin:132, lang:"Korean", g:["Thriller","Drama"], dir:"Bong Joon Ho",
        cast:"Song Kang-ho, Lee Sun-kyun, Cho Yeo-jeong, Choi Woo-shik", pop:92, img:"https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg", yt:"5xH0HfJHsaY",
-       s:"গরিব কিম পরিবার ছলচাতুরীতে ধনী পার্ক পরিবারের বাড়িতে ঢুকে পড়ে — তারপর বেসমেন্টের গোপন রহস্য সবকিছু উল্টে দেয়। অস্কারজয়ী কোরীয় থ্রিলার।"},
-      {id:"spiderman", t:"Spider-Man: No Way Home", y:2021, r:8.2, dur:"২ ঘণ্টা ২৮ মিনিট", lang:"English", g:["Action","Adventure"], dir:"Jon Watts",
+       s:"The poor Kim family cons its way into the wealthy Park household — until a secret in the basement turns everything upside down. Oscar-winning Korean thriller.", sb:"গরিব কিম পরিবার ছলচাতুরীতে ধনী পার্ক পরিবারের বাড়িতে ঢুকে পড়ে — তারপর বেসমেন্টের গোপন রহস্য সবকিছু উল্টে দেয়। অস্কারজয়ী কোরীয় থ্রিলার।"},
+      {id:"spiderman", t:"Spider-Man: No Way Home", y:2021, r:8.2, durMin:148, lang:"English", g:["Action","Adventure"], dir:"Jon Watts",
        cast:"Tom Holland, Zendaya, Benedict Cumberbatch, Willem Dafoe", pop:94, img:"https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_.jpg", yt:"JfVOs4VSpmA",
-       s:"পরিচয় ফাঁস হয়ে যাওয়ায় পিটার পার্কার ডক্টর স্ট্রেঞ্জের সাহায্য চায় — কিন্তু বানান ভুল হয়ে খুলে যায় মাল্টিভার্সের দরজা।"},
-      {id:"inception", t:"Inception", y:2010, r:8.8, dur:"২ ঘণ্টা ২৮ মিনিট", lang:"English", g:["Sci-Fi","Action"], dir:"Christopher Nolan",
+       s:"With his identity exposed, Peter Parker asks Doctor Strange for help — but a spell gone wrong opens the door to the multiverse.", sb:"পরিচয় ফাঁস হয়ে যাওয়ায় পিটার পার্কার ডক্টর স্ট্রেঞ্জের সাহায্য চায় — কিন্তু বানান ভুল হয়ে খুলে যায় মাল্টিভার্সের দরজা।"},
+      {id:"inception", t:"Inception", y:2010, r:8.8, durMin:148, lang:"English", g:["Sci-Fi","Action"], dir:"Christopher Nolan",
        cast:"Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot Page, Tom Hardy", pop:96, img:"https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg", yt:"YoHD9XEInc0",
-       s:"স্বপ্নের ভেতর ঢুকে তথ্য চুরি করা দলের নেতা কব — এবার কাজ উল্টো: কারো মনে একটা ধারণা রোপণ করা, স্বপ্নের ভেতর স্বপ্নের স্তরে নেমে।"},
-      {id:"darkknight", t:"The Dark Knight", y:2008, r:9.0, dur:"২ ঘণ্টা ৩২ মিনিট", lang:"English", g:["Action","Crime"], dir:"Christopher Nolan",
+       s:"Cobb leads a team that steals secrets from inside dreams — this time the job is reversed: plant an idea in someone's mind, descending through layers of dreams within dreams.", sb:"স্বপ্নের ভেতর ঢুকে তথ্য চুরি করা দলের নেতা কব — এবার কাজ উল্টো: কারো মনে একটা ধারণা রোপণ করা, স্বপ্নের ভেতর স্বপ্নের স্তরে নেমে।"},
+      {id:"darkknight", t:"The Dark Knight", y:2008, r:9.0, durMin:152, lang:"English", g:["Action","Crime"], dir:"Christopher Nolan",
        cast:"Christian Bale, Heath Ledger, Aaron Eckhart, Michael Caine", pop:98, img:"https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg", yt:"EXeTwQWrcwY",
-       s:"গথামে ব্যাটম্যানের লড়াইয়ে হাজির হয় জোকার — বিশৃঙ্খলার দূত, যার সামনে নায়ককেই বেছে নিতে হয় কোন সীমা সে পেরোবে না।"},
-      {id:"interstellar", t:"Interstellar", y:2014, r:8.7, dur:"২ ঘণ্টা ৪৯ মিনিট", lang:"English", g:["Sci-Fi","Drama"], dir:"Christopher Nolan",
+       s:"Batman faces the Joker in Gotham — an agent of chaos who forces the hero to choose which lines he will never cross.", sb:"গথামে ব্যাটম্যানের লড়াইয়ে হাজির হয় জোকার — বিশৃঙ্খলার দূত, যার সামনে নায়ককেই বেছে নিতে হয় কোন সীমা সে পেরোবে না।"},
+      {id:"interstellar", t:"Interstellar", y:2014, r:8.7, durMin:169, lang:"English", g:["Sci-Fi","Drama"], dir:"Christopher Nolan",
        cast:"Matthew McConaughey, Anne Hathaway, Jessica Chastain", pop:95, img:"https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg", yt:"zSWdZVtXT7E",
-       s:"মৃতপ্রায় পৃথিবী ছেড়ে ওয়ার্মহোল পেরিয়ে নতুন গ্রহের খোঁজে মহাকাশযাত্রা — সময়, মহাকর্ষ আর বাবা-মেয়ের ভালোবাসার গল্প।"},
-      {id:"topgun", t:"Top Gun: Maverick", y:2022, r:8.2, dur:"২ ঘণ্টা ১০ মিনিট", lang:"English", g:["Action","Drama"], dir:"Joseph Kosinski",
+       s:"Leaving a dying Earth, a voyage through a wormhole searches for a new home — a story of time, gravity, and a father and daughter's love.", sb:"মৃতপ্রায় পৃথিবী ছেড়ে ওয়ার্মহোল পেরিয়ে নতুন গ্রহের খোঁজে মহাকাশযাত্রা — সময়, মহাকর্ষ আর বাবা-মেয়ের ভালোবাসার গল্প।"},
+      {id:"topgun", t:"Top Gun: Maverick", y:2022, r:8.2, durMin:130, lang:"English", g:["Action","Drama"], dir:"Joseph Kosinski",
        cast:"Tom Cruise, Miles Teller, Jennifer Connelly, Val Kilmer", pop:89, img:"https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_.jpg", yt:"giXco2jaZ_4",
-       s:"তিন দশক পর ম্যাভেরিক ফিরে আসে নৌবাহিনীর সেরা পাইলটদের প্রশিক্ষক হয়ে — যাদের একজন তার প্রাক্তন বন্ধুর ছেলে।"},
-      {id:"joker", t:"Joker", y:2019, r:8.4, dur:"২ ঘণ্টা ২ মিনিট", lang:"English", g:["Crime","Drama"], dir:"Todd Phillips",
+       s:"Three decades later, Maverick returns as an instructor for the Navy's best pilots — one of them the son of his late friend.", sb:"তিন দশক পর ম্যাভেরিক ফিরে আসে নৌবাহিনীর সেরা পাইলটদের প্রশিক্ষক হয়ে — যাদের একজন তার প্রাক্তন বন্ধুর ছেলে।"},
+      {id:"joker", t:"Joker", y:2019, r:8.4, durMin:122, lang:"English", g:["Crime","Drama"], dir:"Todd Phillips",
        cast:"Joaquin Phoenix, Robert De Niro, Zazie Beetz", pop:88, img:"https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg", yt:"zAGVQLHvwOY",
-       s:"ব্যর্থ কমেডিয়ান আর্থার ফ্লেকের ধীরে ধীরে রূপান্তর — অবহেলা আর নির্মম শহর তাকে বানিয়ে দেয় গথামের সবচেয়ে ভয়ংকর মুখ।"},
-      {id:"titanic", t:"Titanic", y:1997, r:7.9, dur:"৩ ঘণ্টা ১৪ মিনিট", lang:"English", g:["Romance","Drama"], dir:"James Cameron",
+       s:"Failed comedian Arthur Fleck slowly transforms — a neglected, brutal city turns him into Gotham's most feared face.", sb:"ব্যর্থ কমেডিয়ান আর্থার ফ্লেকের ধীরে ধীরে রূপান্তর — অবহেলা আর নির্মম শহর তাকে বানিয়ে দেয় গথামের সবচেয়ে ভয়ংকর মুখ।"},
+      {id:"titanic", t:"Titanic", y:1997, r:7.9, durMin:194, lang:"English", g:["Romance","Drama"], dir:"James Cameron",
        cast:"Leonardo DiCaprio, Kate Winslet, Billy Zane, Kathy Bates", pop:87, img:"https://upload.wikimedia.org/wikipedia/en/1/18/Titanic_%281997_film%29_poster.png", yt:"CHekzSiZjrY",
-       s:"‘ডুবো-অসম্ভব’ জাহাজ টাইটানিকের প্রথম যাত্রায় গরিব শিল্পী জ্যাক আর অভিজাত রোজের প্রেম — আর সামনে অপেক্ষমাণ হিমশৈলের ট্র্যাজেডি।"},
-      {id:"trainbusan", t:"Train to Busan", y:2016, r:7.6, dur:"১ ঘণ্টা ৫৮ মিনিট", lang:"Korean", g:["Horror","Action"], dir:"Yeon Sang-ho",
+       s:"On the 'unsinkable' Titanic's first voyage, poor artist Jack falls for aristocrat Rose — with the iceberg tragedy waiting ahead.", sb:"‘ডুবো-অসম্ভব’ জাহাজ টাইটানিকের প্রথম যাত্রায় গরিব শিল্পী জ্যাক আর অভিজাত রোজের প্রেম — আর সামনে অপেক্ষমাণ হিমশৈলের ট্র্যাজেডি।"},
+      {id:"trainbusan", t:"Train to Busan", y:2016, r:7.6, durMin:118, lang:"Korean", g:["Horror","Action"], dir:"Yeon Sang-ho",
        cast:"Gong Yoo, Jung Yu-mi, Ma Dong-seok, Kim Su-an", pop:86, img:"https://upload.wikimedia.org/wikipedia/en/9/95/Train_to_Busan.jpg", yt:"1ovgxN2VWNc",
-       s:"সিউল থেকে বুসানগামী ট্রেনে ছড়িয়ে পড়ে জম্বি ভাইরাস — মেয়েকে বাঁচাতে এক বাবার সঙ্গে যাত্রীদের বেঁচে থাকার দৌড়।"},
-      {id:"idiots3", t:"3 Idiots", y:2009, r:8.4, dur:"২ ঘণ্টা ৫০ মিনিট", lang:"Hindi", g:["Comedy","Drama"], dir:"Rajkumar Hirani",
+       s:"A zombie virus spreads on the Seoul-to-Busan train — a father races to save his daughter as passengers fight to survive.", sb:"সিউল থেকে বুসানগামী ট্রেনে ছড়িয়ে পড়ে জম্বি ভাইরাস — মেয়েকে বাঁচাতে এক বাবার সঙ্গে যাত্রীদের বেঁচে থাকার দৌড়।"},
+      {id:"idiots3", t:"3 Idiots", y:2009, r:8.4, durMin:170, lang:"Hindi", g:["Comedy","Drama"], dir:"Rajkumar Hirani",
        cast:"Aamir Khan, R. Madhavan, Sharman Joshi, Kareena Kapoor", pop:90, img:"https://m.media-amazon.com/images/M/MV5BNTkyOGVjMGEtNmQzZi00NzFlLTlhOWQtODYyMDc2ZGJmYzFhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg", yt:"K0eDlFX9GMc",
-       s:"ইঞ্জিনিয়ারিং কলেজের তিন বন্ধু আর মুক্তমনা র‍্যাঞ্চো — মুখস্থবিদ্যার বদলে শেখার আনন্দ নিয়ে প্রশ্ন তোলা সর্বকালের প্রিয় হিন্দি কমেডি-ড্রামা।"},
-      {id:"dangal", t:"Dangal", y:2016, r:8.3, dur:"২ ঘণ্টা ৪১ মিনিট", lang:"Hindi", g:["Drama","Sport"], dir:"Nitesh Tiwari",
+       s:"Three engineering-college friends and free-spirited Rancho — a beloved Hindi comedy-drama that questions rote learning and celebrates the joy of learning.", sb:"ইঞ্জিনিয়ারিং কলেজের তিন বন্ধু আর মুক্তমনা র‍্যাঞ্চো — মুখস্থবিদ্যার বদলে শেখার আনন্দ নিয়ে প্রশ্ন তোলা সর্বকালের প্রিয় হিন্দি কমেডি-ড্রামা।"},
+      {id:"dangal", t:"Dangal", y:2016, r:8.3, durMin:161, lang:"Hindi", g:["Drama","Sport"], dir:"Nitesh Tiwari",
        cast:"Aamir Khan, Sakshi Tanwar, Fatima Sana Shaikh, Sanya Malhotra", pop:85, img:"https://m.media-amazon.com/images/M/MV5BMTQ4MzQzMzM2Nl5BMl5BanBnXkFtZTgwMTQ1NzU3MDI@._V1_.jpg", yt:"x_7YlGv9u1g",
-       s:"প্রাক্তন কুস্তিগির মহাবীর সিং ফোগাট তার মেয়েদের গীতা ও ববিতাকে গড়ে তোলেন বিশ্বমানের কুস্তিগির হিসেবে — সত্য ঘটনা অবলম্বনে।"},
-      {id:"yourname", t:"Your Name", y:2016, r:8.4, dur:"১ ঘণ্টা ৪৬ মিনিট", lang:"Japanese", g:["Anime","Romance"], dir:"Makoto Shinkai",
+       s:"Former wrestler Mahavir Singh Phogat trains his daughters Geeta and Babita into world-class wrestlers — based on a true story.", sb:"প্রাক্তন কুস্তিগির মহাবীর সিং ফোগাট তার মেয়েদের গীতা ও ববিতাকে গড়ে তোলেন বিশ্বমানের কুস্তিগির হিসেবে — সত্য ঘটনা অবলম্বনে।"},
+      {id:"yourname", t:"Your Name", y:2016, r:8.4, durMin:106, lang:"Japanese", g:["Anime","Romance"], dir:"Makoto Shinkai",
        cast:"Ryunosuke Kamiki, Mone Kamishiraishi (কণ্ঠ)", pop:88, img:"https://m.media-amazon.com/images/M/MV5BODRmZDVmNzUtZDA4ZC00NjhkLWI2M2UtN2M0ZDIzNDcxYThjL2ltYWdlXkEyXkFqcGdeQXVyNTk0MzMzODA@._V1_.jpg", yt:"xU47nhruN-Q", anime:1,
-       s:"টোকিওর ছেলে তাকি আর গ্রামের মেয়ে মিৎসুহা হঠাৎ একে অপরের শরীরে জেগে ওঠে — ধূমকেতুর রাতে সময়ের বাঁকে বোনা অ্যানিমে রোমান্স।"},
-      {id:"spiritedaway", t:"Spirited Away", y:2001, r:8.6, dur:"২ ঘণ্টা ৫ মিনিট", lang:"Japanese", g:["Anime","Fantasy"], dir:"Hayao Miyazaki",
+       s:"Taki, a boy from Tokyo, and Mitsuha, a girl from the countryside, suddenly wake up in each other's bodies — an anime romance woven through time on a comet night.", sb:"টোকিওর ছেলে তাকি আর গ্রামের মেয়ে মিৎসুহা হঠাৎ একে অপরের শরীরে জেগে ওঠে — ধূমকেতুর রাতে সময়ের বাঁকে বোনা অ্যানিমে রোমান্স।"},
+      {id:"spiritedaway", t:"Spirited Away", y:2001, r:8.6, durMin:125, lang:"Japanese", g:["Anime","Fantasy"], dir:"Hayao Miyazaki",
        cast:"Rumi Hiiragi, Miyu Irino (কণ্ঠ)", pop:87, img:"https://image.tmdb.org/t/p/w600_and_h900_bestv2/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg", yt:"ByXuk9QqQkk", anime:1,
-       s:"ছোট্ট চিহিরো পড়ে যায় আত্মাদের স্নানঘরের জগতে — বাবা-মাকে ফেরাতে ডাইনি ইউবাবার কাছে কাজ নিয়ে শেখে সাহসের মানে। অস্কারজয়ী অ্যানিমে।"},
-      {id:"pather", t:"Pather Panchali", y:1955, r:8.3, dur:"২ ঘণ্টা ৫ মিনিট", lang:"বাংলা", g:["Drama"], dir:"Satyajit Ray",
+       s:"Little Chihiro falls into the world of the spirits' bathhouse — to save her parents she must work for the witch Yubaba and learn what courage means. Oscar-winning anime.", sb:"ছোট্ট চিহিরো পড়ে যায় আত্মাদের স্নানঘরের জগতে — বাবা-মাকে ফেরাতে ডাইনি ইউবাবার কাছে কাজ নিয়ে শেখে সাহসের মানে। অস্কারজয়ী অ্যানিমে।"},
+      {id:"pather", t:"Pather Panchali", y:1955, r:8.3, durMin:125, lang:"বাংলা", g:["Drama"], dir:"Satyajit Ray",
        cast:"Subir Banerjee, Uma Dasgupta, Karuna Banerjee, Kanu Banerjee", pop:70, img:"https://upload.wikimedia.org/wikipedia/en/7/77/Pather_panchali_poster_in_color_1.jpg", yt:"mgv68E_o6VM",
-       s:"বিভূতিভূষণের উপন্যাস থেকে সত্যজিৎ রায়ের প্রথম ছবি — গ্রামবাংলার দরিদ্র পরিবারের ছেলে অপু ও দিদি দুর্গার শৈশব, বিশ্ব চলচ্চিত্রের মাইলফলক।"},
-      {id:"shawshank", t:"The Shawshank Redemption", y:1994, r:9.3, dur:"২ ঘণ্টা ২২ মিনিট", lang:"English", g:["Drama"], dir:"Frank Darabont",
+       s:"Satyajit Ray's debut from Bibhutibhushan's novel — the childhood of Apu and his sister Durga in a poor Bengali village family, a milestone of world cinema.", sb:"বিভূতিভূষণের উপন্যাস থেকে সত্যজিৎ রায়ের প্রথম ছবি — গ্রামবাংলার দরিদ্র পরিবারের ছেলে অপু ও দিদি দুর্গার শৈশব, বিশ্ব চলচ্চিত্রের মাইলফলক।"},
+      {id:"shawshank", t:"The Shawshank Redemption", y:1994, r:9.3, durMin:142, lang:"English", g:["Drama"], dir:"Frank Darabont",
        cast:"Tim Robbins, Morgan Freeman, Bob Gunton, Clancy Brown", pop:99, img:"https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg", yt:"PLl99DlL6b4",
-       s:"ব্যাংকার অ্যান্ডি ডুফ্রেনকে ভুল খুনের অভিযোগে যাবজ্জীবন কারাদণ্ড দেওয়া হয় — শশাঙ্ক কারাগারের দেয়ালের ভেতরে আশা, বন্ধুত্ব আর স্বাধীনতার অবিশ্বাস্য গল্প।"},
-      {id:"godfather", t:"The Godfather", y:1972, r:9.2, dur:"২ ঘণ্টা ৫৫ মিনিট", lang:"English", g:["Crime","Drama"], dir:"Francis Ford Coppola",
+       s:"Banker Andy Dufresne is wrongly sentenced to life for murder — inside Shawshank's walls, an unbelievable story of hope, friendship and freedom.", sb:"ব্যাংকার অ্যান্ডি ডুফ্রেনকে ভুল খুনের অভিযোগে যাবজ্জীবন কারাদণ্ড দেওয়া হয় — শশাঙ্ক কারাগারের দেয়ালের ভেতরে আশা, বন্ধুত্ব আর স্বাধীনতার অবিশ্বাস্য গল্প।"},
+      {id:"godfather", t:"The Godfather", y:1972, r:9.2, durMin:175, lang:"English", g:["Crime","Drama"], dir:"Francis Ford Coppola",
        cast:"Marlon Brando, Al Pacino, James Caan, Robert Duvall", pop:98, img:"https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg", yt:"UaVTIH8mujA",
-       s:"মাফিয়া ডন ভিটো কর্লিওনের সাম্রাজ্য আর ছোট ছেলে মাইকেলের অনিচ্ছা সত্ত্বেও পারিবারিক ব্যবসায় জড়িয়ে পড়া — অপরাধ-জগতের সর্বকালের সেরা মহাকাব্য।"},
-      {id:"godfather2", t:"The Godfather: Part II", y:1974, r:9.0, dur:"৩ ঘণ্টা ২২ মিনিট", lang:"English", g:["Crime","Drama"], dir:"Francis Ford Coppola",
+       s:"Mafia don Vito Corleone's empire, and his youngest son Michael drawn into the family business against his will — the greatest crime epic of all time.", sb:"মাফিয়া ডন ভিটো কর্লিওনের সাম্রাজ্য আর ছোট ছেলে মাইকেলের অনিচ্ছা সত্ত্বেও পারিবারিক ব্যবসায় জড়িয়ে পড়া — অপরাধ-জগতের সর্বকালের সেরা মহাকাব্য।"},
+      {id:"godfather2", t:"The Godfather: Part II", y:1974, r:9.0, durMin:202, lang:"English", g:["Crime","Drama"], dir:"Francis Ford Coppola",
        cast:"Al Pacino, Robert De Niro, Robert Duvall, Diane Keaton", pop:97, img:"https://m.media-amazon.com/images/M/MV5BMWMwMGQzZTItY2JlNC00OWZiLWIyMDctNDk2ZDQ2YjRjMWQ0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg", yt:"9O1Iy9od7-A",
-       s:"মাইকেল কর্লিওনের ক্ষমতা বিস্তারের সঙ্গে সঙ্গে ভিটোর তরুণ বয়সের উত্থান — দুই প্রজন্মের গল্পে বোনা সিক্যুয়েল।"},
-      {id:"lotr-rotk", t:"The Lord of the Rings: The Return of the King", y:2003, r:9.0, dur:"৩ ঘণ্টা ২১ মিনিট", lang:"English", g:["Adventure","Fantasy"], dir:"Peter Jackson",
+       s:"As Michael Corleone expands his power, young Vito's rise unfolds alongside — a sequel woven from two generations.", sb:"মাইকেল কর্লিওনের ক্ষমতা বিস্তারের সঙ্গে সঙ্গে ভিটোর তরুণ বয়সের উত্থান — দুই প্রজন্মের গল্পে বোনা সিক্যুয়েল।"},
+      {id:"lotr-rotk", t:"The Lord of the Rings: The Return of the King", y:2003, r:9.0, durMin:201, lang:"English", g:["Adventure","Fantasy"], dir:"Peter Jackson",
        cast:"Elijah Wood, Viggo Mortensen, Ian McKellen, Orlando Bloom", pop:96, img:"https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg", yt:"_pE23VwYQJM",
-       s:"ফ্রোডো মাউন্ট ডুমের দিকে শেষ যাত্রায়, আরাগর্ন গন্ডরের সিংহাসনের দিকে — মধ্য-পৃথিবীর ভাগ্য নির্ধারণকারী শেষ যুদ্ধ।"},
-      {id:"pulpfiction", t:"Pulp Fiction", y:1994, r:8.9, dur:"২ ঘণ্টা ৩৪ মিনিট", lang:"English", g:["Crime","Drama"], dir:"Quentin Tarantino",
+       s:"Frodo journeys to Mount Doom while Aragorn marches toward Gondor's throne — the final battle that decides Middle-earth's fate.", sb:"ফ্রোডো মাউন্ট ডুমের দিকে শেষ যাত্রায়, আরাগর্ন গন্ডরের সিংহাসনের দিকে — মধ্য-পৃথিবীর ভাগ্য নির্ধারণকারী শেষ যুদ্ধ।"},
+      {id:"pulpfiction", t:"Pulp Fiction", y:1994, r:8.9, durMin:154, lang:"English", g:["Crime","Drama"], dir:"Quentin Tarantino",
        cast:"John Travolta, Samuel L. Jackson, Uma Thurman, Bruce Willis", pop:95, img:"https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg", yt:"s7EdQ4FqbhY",
-       s:"দুই হিটম্যান, এক বক্সার আর এক গ্যাংস্টারের স্ত্রী — টারান্টিনোর অ-রৈখিক গল্পে লস অ্যাঞ্জেলেসের অপরাধ-জগতের কাল্ট ক্লাসিক।"},
-      {id:"lotr-fellowship", t:"The Lord of the Rings: The Fellowship of the Ring", y:2001, r:8.9, dur:"২ ঘণ্টা ৫৮ মিনিট", lang:"English", g:["Adventure","Fantasy"], dir:"Peter Jackson",
+       s:"Two hitmen, a boxer and a gangster's wife — Tarantino's non-linear cult classic of the Los Angeles underworld.", sb:"দুই হিটম্যান, এক বক্সার আর এক গ্যাংস্টারের স্ত্রী — টারান্টিনোর অ-রৈখিক গল্পে লস অ্যাঞ্জেলেসের অপরাধ-জগতের কাল্ট ক্লাসিক।"},
+      {id:"lotr-fellowship", t:"The Lord of the Rings: The Fellowship of the Ring", y:2001, r:8.9, durMin:178, lang:"English", g:["Adventure","Fantasy"], dir:"Peter Jackson",
        cast:"Elijah Wood, Ian McKellen, Orlando Bloom, Sean Bean", pop:94, img:"https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_.jpg", yt:"UFNK8qznrPc",
-       s:"হবিট ফ্রোডোর হাতে পড়ে এক আংটি — যা ধ্বংস করতে নয় সঙ্গী নিয়ে শুরু হয় মধ্য-পৃথিবী পেরিয়ে মাউন্ট ডুমের যাত্রা।"},
-      {id:"forrestgump", t:"Forrest Gump", y:1994, r:8.8, dur:"২ ঘণ্টা ২২ মিনিট", lang:"English", g:["Drama","Romance"], dir:"Robert Zemeckis",
+       s:"Hobbit Frodo inherits a ring — and with nine companions begins the journey across Middle-earth to destroy it at Mount Doom.", sb:"হবিট ফ্রোডোর হাতে পড়ে এক আংটি — যা ধ্বংস করতে নয় সঙ্গী নিয়ে শুরু হয় মধ্য-পৃথিবী পেরিয়ে মাউন্ট ডুমের যাত্রা।"},
+      {id:"forrestgump", t:"Forrest Gump", y:1994, r:8.8, durMin:142, lang:"English", g:["Drama","Romance"], dir:"Robert Zemeckis",
        cast:"Tom Hanks, Robin Wright, Gary Sinise, Sally Field", pop:93, img:"https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg", yt:"bLvqoHBptjg",
-       s:"সরলমনা ফরেস্ট গাম্পের চোখে আমেরিকার কয়েক দশক — যুদ্ধ, প্রেম আর অজান্তে ইতিহাসের পাতায় জায়গা করে নেওয়ার হৃদয়ছোঁয়া গল্প।"},
-      {id:"fightclub", t:"Fight Club", y:1999, r:8.8, dur:"২ ঘণ্টা ১৯ মিনিট", lang:"English", g:["Drama","Thriller"], dir:"David Fincher",
+       s:"Through simple-minded Forrest Gump's eyes, decades of America — war, love, and unknowingly stepping into history. A heart-touching story.", sb:"সরলমনা ফরেস্ট গাম্পের চোখে আমেরিকার কয়েক দশক — যুদ্ধ, প্রেম আর অজান্তে ইতিহাসের পাতায় জায়গা করে নেওয়ার হৃদয়ছোঁয়া গল্প।"},
+      {id:"fightclub", t:"Fight Club", y:1999, r:8.8, durMin:139, lang:"English", g:["Drama","Thriller"], dir:"David Fincher",
        cast:"Brad Pitt, Edward Norton, Helena Bonham Carter, Meat Loaf", pop:92, img:"https://m.media-amazon.com/images/M/MV5BNDIzNDU0YzEtYzE5Ni00ZjlkLTk5ZjgtNjM3NWE4YzA3Nzk3XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_.jpg", yt:"qtRKdVHc-cE",
-       s:"অনিদ্রায় ভোগা এক অফিস-কর্মী আর রহস্যময় টেইলার ডার্ডেনের হাত ধরে জন্ম নেয় গোপন ফাইট ক্লাব — যা ধীরে ধীরে ছড়িয়ে পড়ে গোটা শহরে।"},
-      {id:"matrix", t:"The Matrix", y:1999, r:8.7, dur:"২ ঘণ্টা ১৬ মিনিট", lang:"English", g:["Sci-Fi","Action"], dir:"Lana & Lilly Wachowski",
+       s:"An insomniac office worker meets the mysterious Tyler Durden, and a secret fight club is born — slowly spreading across the whole city.", sb:"অনিদ্রায় ভোগা এক অফিস-কর্মী আর রহস্যময় টেইলার ডার্ডেনের হাত ধরে জন্ম নেয় গোপন ফাইট ক্লাব — যা ধীরে ধীরে ছড়িয়ে পড়ে গোটা শহরে।"},
+      {id:"matrix", t:"The Matrix", y:1999, r:8.7, durMin:136, lang:"English", g:["Sci-Fi","Action"], dir:"Lana & Lilly Wachowski",
        cast:"Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss, Hugo Weaving", pop:91, img:"https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg", yt:"vKQi3bBA1y8",
-       s:"হ্যাকার নিও জানতে পারে তার চারপাশের পৃথিবীটাই আসলে এক সিমুলেশন — মেশিনের বানানো ম্যাট্রিক্স থেকে জেগে ওঠার বিপ্লবী সাই-ফাই।"},
-      {id:"goodfellas", t:"Goodfellas", y:1990, r:8.7, dur:"২ ঘণ্টা ২৫ মিনিট", lang:"English", g:["Crime","Drama"], dir:"Martin Scorsese",
+       s:"Hacker Neo learns the world around him is a simulation — a revolutionary sci-fi about waking up from the machine-built Matrix.", sb:"হ্যাকার নিও জানতে পারে তার চারপাশের পৃথিবীটাই আসলে এক সিমুলেশন — মেশিনের বানানো ম্যাট্রিক্স থেকে জেগে ওঠার বিপ্লবী সাই-ফাই।"},
+      {id:"goodfellas", t:"Goodfellas", y:1990, r:8.7, durMin:145, lang:"English", g:["Crime","Drama"], dir:"Martin Scorsese",
        cast:"Robert De Niro, Ray Liotta, Joe Pesci, Lorraine Bracco", pop:90, img:"https://m.media-amazon.com/images/M/MV5BY2NkZjEzMDgtN2RjYy00YzM1LWI4ZmQtMjIwYjFjNmI3ZGEwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg", yt:"2ilzidi_J8Q",
-       s:"কিশোর হেনরি হিলের মাফিয়া-জীবনের উত্থান-পতন — বিলাস, বিশ্বাসঘাতকতা আর পতনের সত্য ঘটনা অবলম্বনে স্করসেসির ক্লাসিক।"}
+       s:"Teenage Henry Hill's rise and fall in the mafia — luxury, betrayal and downfall in Scorsese's classic, based on a true story.", sb:"কিশোর হেনরি হিলের মাফিয়া-জীবনের উত্থান-পতন — বিলাস, বিশ্বাসঘাতকতা আর পতনের সত্য ঘটনা অবলম্বনে স্করসেসির ক্লাসিক।"}
     ];
     var byId = {};
     MOVIES.forEach(function(m){ byId[m.id]=m; });
@@ -457,7 +597,8 @@
       toastTimer = setTimeout(function(){ toastEl.classList.remove("show"); }, 2400);
     }
     function esc(s){ var d=document.createElement("div"); d.textContent=s; return d.innerHTML; }
-    function fmtDur(m){ return m.dur; }
+    function durText(m){ if(m.durMin) return fmtMins(m.durMin); if(m.dur) return m.dur; return "—"; }
+    function descText(m){ return (LANG==="bn" && m.sb) ? m.sb : m.s; }
 
     /* genre select options */
     var genres = [];
@@ -465,28 +606,28 @@
     genres.sort();
     var genreSel = document.getElementById("genreSel");
     genres.forEach(function(g){
-      var o=document.createElement("option"); o.value=g; o.textContent=g; genreSel.appendChild(o);
+      var o=document.createElement("option"); o.value=g; o.textContent=genreName(g); genreSel.appendChild(o);
     });
 
     function poster(m, cls){
       var img;
       if(m.img){
         img = '<span class="part">'+esc(m.t)+'</span>'
-          + '<img src="'+esc(m.img)+'" alt="'+esc(m.t)+' পোস্টার" loading="lazy" onerror="this.remove()" />'
+          + '<img src="'+esc(m.img)+'" alt="'+esc(m.t)+' '+t("posterAlt")+'" loading="lazy" onerror="this.remove()" />'
           + (m.src ? '<span class="src-badge">API</span>' : '');
       } else {
         img = '<span class="part">'+esc(m.t)+'</span>'
-          + '<img src="assets/posters/'+m.id+'.jpg" alt="'+esc(m.t)+' পোস্টার" loading="lazy" onerror="this.remove()" />';
+          + '<img src="assets/posters/'+m.id+'.jpg" alt="'+esc(m.t)+' '+t("posterAlt")+'" loading="lazy" onerror="this.remove()" />';
       }
       return '<div class="poster">'+img
         + '<span class="rate">★ '+m.r.toFixed(1)+'</span>'
         + '<span class="play"><span class="disc"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M7 4.5v15l13-7.5z"/></svg></span></span></div>';
     }
     function card(m){
-      return '<button type="button" class="card" data-detail="'+m.id+'" aria-label="'+esc(m.t)+' বিস্তারিত">'
+      return '<button type="button" class="card" data-detail="'+m.id+'" aria-label="'+esc(m.t)+' '+t("detailsAria")+'">'
         + poster(m)
         + '<h3>'+esc(m.t)+'</h3>'
-        + '<span class="sub"><span class="en">'+m.y+'</span><span>'+esc(m.g[0])+'</span><span class="lg">'+esc(m.lang)+'</span></span>'
+        + '<span class="sub"><span class="en">'+m.y+'</span><span>'+esc(genreName(m.g[0]))+'</span><span class="lg">'+esc(langName(m.lang))+'</span></span>'
         + '</button>';
     }
     function railSection(title, note, list, cls){
@@ -501,11 +642,11 @@
     }
     function cwSection(){
       if(!continueList.length) return "";
-      var html = '<section class="row"><div class="row-head"><h2>Continue Watching</h2><span>ট্রেইলার যেখানে ছেড়েছিলেন</span></div><div class="rail cw-rail">';
+      var html = '<section class="row"><div class="row-head"><h2>Continue Watching</h2><span>'+t("cwSub")+'</span></div><div class="rail cw-rail">';
       continueList.forEach(function(c){
         var m = byId[c.id];
-        html += '<button type="button" class="card cw-card" data-trailer="'+m.id+'" aria-label="'+esc(m.t)+' ট্রেইলার আবার দেখুন">'
-          + '<div class="poster"><img src="'+(m.img ? esc(m.img) : 'assets/posters/'+m.id+'.jpg')+'" alt="'+esc(m.t)+' পোস্টার" style="object-position:center 25%" />'
+        html += '<button type="button" class="card cw-card" data-trailer="'+m.id+'" aria-label="'+esc(m.t)+' '+t("trailerAgainAria")+'">'
+          + '<div class="poster"><img src="'+(m.img ? esc(m.img) : 'assets/posters/'+m.id+'.jpg')+'" alt="'+esc(m.t)+' '+t("posterAlt")+'" style="object-position:center 25%" />'
           + '<span class="play" style="opacity:1"><span class="disc"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M7 4.5v15l13-7.5z"/></svg></span></span></div>'
           + '<h3>'+esc(m.t)+'</h3><span class="bar"><i style="width:'+c.pct+'%"></i></span></button>';
       });
@@ -545,9 +686,9 @@
 
       if(tab==="mylist"){
         var mine = MOVIES.filter(function(m){ return myList.has(m.id); });
-        html = '<section class="row"><div class="row-head"><h2>মাই লিস্ট</h2><span>'+mine.length+'টি সিনেমা</span></div>'
+        html = '<section class="row"><div class="row-head"><h2>'+t("myListTitle")+'</h2><span>'+cntMovies(mine.length)+'</span></div>'
           + (mine.length ? '<div class="grid">'+mine.map(card).join("")+'</div>'
-             : '<div class="empty"><b>লিস্ট এখনো খালি</b>যেকোনো সিনেমার বিস্তারিত খুলে “মাই লিস্টে যোগ করুন” চাপলেই এখানে জমা হবে।</div>')
+             : '<div class="empty">'+t("myListEmpty")+'</div>')
           + '</section>';
         content.innerHTML = html;
         return;
@@ -557,21 +698,21 @@
         var scoped = list;
         if(tab==="anime") scoped = scoped.filter(function(m){return m.anime;});
         if(tab==="movies") scoped = scoped.filter(function(m){return !m.anime;});
-        html = gridSection("খোঁজের ফলাফল", scoped.length+"টি পাওয়া গেছে", sorted(scoped));
-        if(!scoped.length) html = '<section class="row"><div class="empty"><b>কিছু পাওয়া যায়নি</b>নামের বানান বদলে, ভাষা বা জঁর ফিল্টার সরিয়ে আবার চেষ্টা করুন।</div></section>';
+        html = gridSection(t("searchTitle"), cntFound(scoped.length), sorted(scoped));
+        if(!scoped.length) html = '<section class="row"><div class="empty">'+t("searchNone")+'</div></section>';
         content.innerHTML = html;
         return;
       }
 
       if(tab==="anime"){
         html = cwSection()
-          + gridSection("অ্যানিমে", "জাপানি অ্যানিমেশন", sorted(MOVIES.filter(function(m){return m.anime;})));
+          + gridSection(t("animeTitle"), t("animeSub"), sorted(MOVIES.filter(function(m){return m.anime;})));
         content.innerHTML = html; return;
       }
       if(tab==="movies"){
         html = cwSection()
-          + railSection("জনপ্রিয় মুভি", "", sorted(MOVIES.filter(function(m){return !m.anime;})))
-          + gridSection("সব মুভি", MOVIES.filter(function(m){return !m.anime;}).length+"টি", sorted(MOVIES.filter(function(m){return !m.anime;})));
+          + railSection(t("popMovies"), "", sorted(MOVIES.filter(function(m){return !m.anime;})))
+          + gridSection(t("allMovies"), cntMovies(MOVIES.filter(function(m){return !m.anime;}).length), sorted(MOVIES.filter(function(m){return !m.anime;})));
         content.innerHTML = html; return;
       }
 
@@ -580,63 +721,66 @@
       var top = MOVIES.slice().sort(function(a,b){return b.r-a.r;}).slice(0,10);
       var popular = sorted(MOVIES.filter(function(m){return m.pop>=85 && m.pop<97;}));
       html = cwSection()
-        + (tmdbTrending.length ? railSection("Trending This Week", "TMDB — এই সপ্তাহের ট্রেন্ডিং", tmdbTrending) : "")
-        + (tmdbNowPlaying.length ? railSection("Now Playing", "TMDB — এখন সিনেমা হলে", tmdbNowPlaying) : "")
-        + (tmdbTrendingDay.length ? railSection("Trending Today", "TMDB — আজকের ট্রেন্ডিং", tmdbTrendingDay) : "")
-        + (tmdbUpcoming.length ? railSection("Coming Soon", "TMDB — শীঘ্রই আসছে", tmdbUpcoming) : "")
-        + (tmdbPopular.length ? railSection("Popular", "TMDB — জনপ্রিয়", tmdbPopular) : "")
-        + (tmdbTopRated.length ? railSection("Top Rated on TMDB", "TMDB — সর্বোচ্চ রেটিং", tmdbTopRated) : "")
-        + railSection("Trending Now", "সবাই যা দেখছে", trending)
-        + railSection("Top Rated", "সর্বোচ্চ রেটিং", top)
+        + (tmdbTrending.length ? railSection("Trending This Week", t("tmdbSubWeek"), tmdbTrending) : "")
+        + (tmdbNowPlaying.length ? railSection("Now Playing", t("tmdbSubNow"), tmdbNowPlaying) : "")
+        + (tmdbTrendingDay.length ? railSection("Trending Today", t("tmdbSubDay"), tmdbTrendingDay) : "")
+        + (tmdbUpcoming.length ? railSection("Coming Soon", t("tmdbSubSoon"), tmdbUpcoming) : "")
+        + (tmdbPopular.length ? railSection("Popular", t("tmdbSubPop"), tmdbPopular) : "")
+        + (tmdbTopRated.length ? railSection("Top Rated on TMDB", t("tmdbSubTop"), tmdbTopRated) : "")
+        + railSection("Trending Now", t("rowTrendingNowSub"), trending)
+        + railSection("Top Rated", t("rowTopRatedSub"), top)
         + railSection("Popular on Sweet Movies", "", popular)
-        + railSection("অ্যাকশন", "Action", sorted(MOVIES.filter(function(m){return m.g.indexOf("Action")>=0;})))
-        + railSection("Sci-Fi ও Adventure", "", sorted(MOVIES.filter(function(m){return m.g.indexOf("Sci-Fi")>=0 || m.g.indexOf("Adventure")>=0;})))
-        + railSection("ড্রামা", "Drama", sorted(MOVIES.filter(function(m){return m.g.indexOf("Drama")>=0;})))
-        + railSection("বলিউড ও বাংলা", "Hindi • বাংলা", sorted(MOVIES.filter(function(m){return m.lang==="Hindi" || m.lang==="বাংলা";})))
-        + railSection("অ্যানিমে", "Anime", sorted(MOVIES.filter(function(m){return m.anime;})));
+        + railSection(t("rowAction"), "Action", sorted(MOVIES.filter(function(m){return m.g.indexOf("Action")>=0;})))
+        + railSection(t("rowScifi"), "", sorted(MOVIES.filter(function(m){return m.g.indexOf("Sci-Fi")>=0 || m.g.indexOf("Adventure")>=0;})))
+        + railSection(t("rowDrama"), "Drama", sorted(MOVIES.filter(function(m){return m.g.indexOf("Drama")>=0;})))
+        + railSection(t("rowBollywood"), t("rowBollywoodSub"), sorted(MOVIES.filter(function(m){return m.lang==="Hindi" || m.lang==="বাংলা";})))
+        + railSection(t("rowAnime"), "Anime", sorted(MOVIES.filter(function(m){return m.anime;})));
       content.innerHTML = html;
     }
 
     /* ---------- detail modal ---------- */
+    var detailOpenId = null;
     var detailScrim = document.getElementById("detailScrim");
     var detailModal = document.getElementById("detailModal");
     function openDetail(id){
       var m = byId[id]; if(!m) return;
+      detailOpenId = id;
       enrichTmdb(m);
       var inList = myList.has(m.id);
       var like = MOVIES.filter(function(x){ return x.id!==m.id && x.g.some(function(g){return m.g.indexOf(g)>=0;}); })
         .sort(function(a,b){return b.r-a.r;}).slice(0,6);
       detailModal.innerHTML =
-        '<div class="modal-hero"><img src="'+(m.img ? esc(m.img) : 'assets/posters/'+m.id+'.jpg')+'" alt="'+esc(m.t)+' পোস্টার" onerror="this.remove()" />'
-        + '<button class="x" type="button" data-close aria-label="বন্ধ করুন">✕</button>'
+        '<div class="modal-hero"><img src="'+(m.img ? esc(m.img) : 'assets/posters/'+m.id+'.jpg')+'" alt="'+esc(m.t)+' '+t("posterAlt")+'" onerror="this.remove()" />'
+        + '<button class="x" type="button" data-close aria-label="'+t("closeAria")+'">✕</button>'
         + '<div class="mh-in"><h2>'+esc(m.t)+'</h2>'
         + '<div style="display:flex;gap:.6rem;flex-wrap:wrap">'
-        + ((m.yt || m.tmdb) ? '<button class="btn btn-red" type="button" data-trailer="'+m.id+'">▶ ট্রেইলার</button>' : "")
-        + '<button class="btn btn-ghost'+(inList?" added":"")+'" type="button" data-list="'+m.id+'">'+(inList?"✓ লিস্টে আছে":"＋ মাই লিস্ট")+'</button>'
+        + ((m.yt || m.tmdb) ? '<button class="btn btn-red" type="button" data-trailer="'+m.id+'">'+t("trailerBtn")+'</button>' : "")
+        + '<button class="btn btn-ghost'+(inList?" added":"")+'" type="button" data-list="'+m.id+'">'+(inList?t("listIn"):t("listAddBtn"))+'</button>'
         + '</div></div></div>'
         + '<div class="modal-body">'
-        + '<div class="m-meta"><span class="score">'+Math.round(m.r*10)+'% ম্যাচ</span>'
+        + '<div class="m-meta"><span class="score">'+Math.round(m.r*10)+'% '+t("match")+'</span>'
         + '<span><span class="star">★</span> <span class="en">'+m.r.toFixed(1)+' / 10</span></span>'
-        + '<span class="en">'+m.y+'</span><span>'+m.dur+'</span>'
-        + m.g.map(function(g){return '<span class="tag">'+g+'</span>';}).join("")
-        + '<span class="tag">'+esc(m.lang)+'</span></div>'
-        + '<p class="story">'+esc(m.s)+'</p>'
+        + '<span class="en">'+m.y+'</span><span>'+durText(m)+'</span>'
+        + m.g.map(function(g){return '<span class="tag">'+genreName(g)+'</span>';}).join("")
+        + '<span class="tag">'+esc(langName(m.lang))+'</span></div>'
+        + '<p class="story">'+esc(descText(m))+'</p>'
         + '<dl class="facts">'
-        + '<div><dt>পরিচালক</dt><dd>'+esc(m.dir)+'</dd></div>'
-        + '<div><dt>অভিনয়ে</dt><dd>'+esc(m.cast)+'</dd></div>'
-        + '<div><dt>ভাষা</dt><dd class="bn">'+esc(m.lang)+'</dd></div>'
-        + '<div><dt>রানটাইম</dt><dd class="bn">'+m.dur+'</dd></div>'
-        + (m.src ? '<div><dt>ডেটা সোর্স</dt><dd class="bn">'+esc(m.src)+'</dd></div>' : "")
-        + (m.imdb ? '<div><dt>IMDb</dt><dd><a href="https://www.imdb.com'+esc(m.imdb)+'" target="_blank" rel="noopener" style="color:var(--accent2)">পেজ দেখুন ↗</a></dd></div>' : "")
-        + (m.imdbRating ? '<div><dt>IMDb রেটিং</dt><dd><span class="star">★</span> <span class="en">'+m.imdbRating+' / 10</span></dd></div>' : "")
+        + '<div><dt>'+t("modalDirector")+'</dt><dd>'+esc(m.dir)+'</dd></div>'
+        + '<div><dt>'+t("modalCast")+'</dt><dd>'+esc(m.cast).split("(কণ্ঠ)").join(t("voice"))+'</dd></div>'
+        + '<div><dt>'+t("modalLang")+'</dt><dd class="bn">'+esc(langName(m.lang))+'</dd></div>'
+        + '<div><dt>'+t("modalRuntime")+'</dt><dd class="bn">'+durText(m)+'</dd></div>'
+        + (m.src ? '<div><dt>'+t("modalSource")+'</dt><dd class="bn">'+esc(m.src)+'</dd></div>' : "")
+        + (m.imdb ? '<div><dt>IMDb</dt><dd><a href="https://www.imdb.com'+esc(m.imdb)+'" target="_blank" rel="noopener" style="color:var(--accent2)">'+t("modalImdbPage")+'</a></dd></div>' : "")
+        + (m.imdbRating ? '<div><dt>'+t("modalImdbRating")+'</dt><dd><span class="star">★</span> <span class="en">'+m.imdbRating+' / 10</span></dd></div>' : "")
         + '</dl>'
-        + (m._watch ? '<h3 class="like-h">কোথায় দেখবেন (US)</h3><div class="m-meta">'+m._watch.names.map(function(n){ return '<span class="tag">'+esc(n)+'</span>'; }).join("")+(m._watch.rentBuy && m._watch.rentBuy.length ? '<span class="tag" style="opacity:.75">ভাড়া/কিনুন: '+m._watch.rentBuy.map(esc).join(", ")+'</span>' : "")+'<a href="'+m._watch.link+'" target="_blank" rel="noopener" style="color:var(--accent2)">TMDB-তে দেখুন ↗</a></div>' : "")
+        + (m._watch ? '<h3 class="like-h">'+t("watchTitle")+'</h3><div class="m-meta">'+m._watch.names.map(function(n){ return '<span class="tag">'+esc(n)+'</span>'; }).join("")+(m._watch.rentBuy && m._watch.rentBuy.length ? '<span class="tag" style="opacity:.75">'+t("watchRentBuy")+' '+m._watch.rentBuy.map(esc).join(", ")+'</span>' : "")+'<a href="'+m._watch.link+'" target="_blank" rel="noopener" style="color:var(--accent2)">'+t("watchTmdb")+'</a></div>' : "")
         + (like.length ? '<h3 class="like-h">More Like This</h3><div class="like-grid">'+like.map(card).join("")+'</div>' : "")
         + '</div>';
       detailScrim.classList.add("open");
       document.body.style.overflow = "hidden";
     }
     function closeDetail(){
+      detailOpenId = null;
       detailScrim.classList.remove("open");
       if(!trailerScrim.classList.contains("open")) document.body.style.overflow = "";
     }
@@ -648,18 +792,18 @@
     function openTrailer(id){
       var m = byId[id]; if(!m) return;
       if(!m.yt && m.tmdb){
-        toast("ট্রেইলার খুঁজছি…");
+        toast(t("toastFinding"));
         fetchTmdbTrailer(m, function(key){
           if(key) openTrailer(id);
-          else toast("এই মুভির অফিসিয়াল ট্রেইলার পাওয়া যায়নি");
+          else toast(t("toastNoTrailer"));
         });
         return;
       }
-      if(!m.yt){ toast("এই টাইটেলের অফিসিয়াল ট্রেইলার লিংক API ডেটায় নেই"); return; }
+      if(!m.yt){ toast(t("toastNoTrailerLink")); return; }
       trailerMovie = m; trailerStarted = Date.now();
       document.getElementById("trailerTitle").textContent = m.t + " — Official Trailer";
       document.getElementById("trailerYt").href = "https://www.youtube.com/watch?v=" + m.yt;
-      trailerFrame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/'+m.yt+'?autoplay=1&rel=0" title="'+esc(m.t)+' ট্রেইলার" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+      trailerFrame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/'+m.yt+'?autoplay=1&rel=0" title="'+esc(m.t)+' — '+t("trailerWord")+'" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
       trailerScrim.classList.add("open");
       document.body.style.overflow = "hidden";
     }
@@ -681,14 +825,14 @@
     /* ---------- my list ---------- */
     function toggleList(id){
       var m = byId[id];
-      if(myList.has(id)){ myList.delete(id); toast("“"+m.t+"” মাই লিস্ট থেকে সরানো হয়েছে"); }
-      else { myList.add(id); toast("“"+m.t+"” মাই লিস্টে যোগ হয়েছে"); }
+      if(myList.has(id)){ myList.delete(id); toast(t("listRemove").replace("{t}", m.t)); }
+      else { myList.add(id); toast(t("listAdd").replace("{t}", m.t)); }
       var c = document.getElementById("listCount");
       c.hidden = myList.size===0; c.textContent = myList.size;
       var hb = document.getElementById("heroListBtn");
       if(id==="dune2"){
         hb.classList.toggle("added", myList.has("dune2"));
-        hb.textContent = myList.has("dune2") ? "✓ লিস্টে আছে" : "＋ মাই লিস্ট";
+        hb.textContent = myList.has("dune2") ? t("listIn") : t("listAddBtn");
       }
       if(detailScrim.classList.contains("open")) openDetail(id);
       if(tab==="mylist") render();
@@ -735,12 +879,13 @@
 
     /* ---------- live open-source APIs (GitHub) ---------- */
     var BN = "০১২৩৪৫৬৭৮৯";
-    function bnNum(n){ return String(n).replace(/\d/g, function(d){ return BN[+d]; }); }
+    function bnNum(n){ return LANG==="bn" ? String(n).replace(/\d/g, function(d){ return BN[+d]; }) : String(n); }
     function fmtMins(mins){
       mins = parseInt(mins, 10);
       if(!mins || isNaN(mins)) return "—";
       var h = Math.floor(mins/60), r = mins%60;
-      return (h ? bnNum(h)+" ঘণ্টা " : "") + (r ? bnNum(r)+" মিনিট" : (h ? "" : "—"));
+      if(LANG==="bn") return (h ? bnNum(h)+" ঘণ্টা " : "") + (r ? bnNum(r)+" মিনিট" : (h ? "" : "—"));
+      return (h ? h+"h " : "") + (r ? r+"m" : (h ? "" : "—"));
     }
     var apiDot = document.getElementById("apiDot");
     var apiStatus = document.getElementById("apiStatus");
@@ -748,11 +893,18 @@
     var apiLoaded = false;
 
     /* ---------- TMDB (daily fresh movies) ---------- */
+    var DEFAULT_TMDB_KEY = ""; /* built-in TMDB key — filled at deploy time so the site works without pasting a key */
     var TMDB_KEY_LS = "sweetmovies_tmdb_key";
     var tmdbTrending = [], tmdbNowPlaying = [], tmdbTrendingDay = [], tmdbUpcoming = [], tmdbPopular = [], tmdbTopRated = [];
     var TMDB_GENRES = {28:"Action",12:"Adventure",16:"Animation",35:"Comedy",80:"Crime",99:"Documentary",18:"Drama",10751:"Family",14:"Fantasy",36:"History",27:"Horror",10402:"Music",9648:"Mystery",10749:"Romance",878:"Sci-Fi",10770:"TV Movie",53:"Thriller",10752:"War",37:"Western"};
     var TMDB_LANGS = {en:"English", bn:"বাংলা", hi:"Hindi", ko:"Korean", ja:"Japanese"};
-    function tmdbKey(){ try{ return (localStorage.getItem(TMDB_KEY_LS)||"").trim(); }catch(e){ return ""; } }
+    function tmdbKey(){ try{ var k = (localStorage.getItem(TMDB_KEY_LS)||"").trim(); if(k) return k; }catch(e){} return DEFAULT_TMDB_KEY; }
+    function hasStoredKey(){ try{ return !!localStorage.getItem(TMDB_KEY_LS); }catch(e){ return false; } }
+    function refreshKeyStatus(){
+      if(hasStoredKey()) tmdbKeyStatus.textContent = t("keyStatusOwn");
+      else if(DEFAULT_TMDB_KEY) tmdbKeyStatus.textContent = t("keyStatusBuiltin");
+      else tmdbKeyStatus.textContent = t("keyStatusNone");
+    }
     function tmdbFetch(path){
       var key = tmdbKey();
       var url = "https://api.themoviedb.org/3" + path + (path.indexOf("?")>=0 ? "&" : "?");
@@ -774,7 +926,7 @@
         g:gs.length?gs:["Drama"], dir:"—", cast:"—", pop:pop,
         yt:null, img:x.poster_path ? "https://image.tmdb.org/t/p/w500"+x.poster_path : null,
         src:"TMDB (The Movie Database)",
-        s:x.overview || "এই মুভির বিবরণ TMDB-তে পাওয়া যায়নি।"
+        s:x.overview || t("tmdbNoDesc")
       };
     }
     var tmdbStatus = ""; // "ok" | "bad" | ""
@@ -825,7 +977,7 @@
       Promise.all([det, cred, prov]).then(function(res){
         var d = res[0], c = res[1], p = res[2];
         if(d){
-          if(d.runtime) m.dur = fmtMins(d.runtime);
+          if(d.runtime) m.durMin = d.runtime;
           if(d.overview) m.s = d.overview;
           if(d.genres && d.genres.length) m.g = d.genres.map(function(g){ return g.name; }).slice(0,3);
         }
@@ -909,9 +1061,9 @@
       MOVIES.forEach(function(m){ m.g.forEach(function(g){ if(gs.indexOf(g)<0) gs.push(g); }); });
       gs.sort();
       var cur = genreSel.value;
-      genreSel.innerHTML = '<option value="all">সব জঁর</option>';
+      genreSel.innerHTML = '<option value="all">'+t("allGenres")+'</option>';
       gs.forEach(function(g){
-        var o=document.createElement("option"); o.value=g; o.textContent=g; genreSel.appendChild(o);
+        var o=document.createElement("option"); o.value=g; o.textContent=genreName(g); genreSel.appendChild(o);
       });
       genreSel.value = (gs.indexOf(cur)>=0 || cur==="all") ? cur : "all";
       genreF = genreSel.value;
@@ -922,6 +1074,19 @@
         new Promise(function(_, rej){ setTimeout(function(){ rej(new Error("timeout")); }, ms || 12000); })
       ]);
     }
+    var lastStatus = null;
+    function renderStatus(){
+      if(!lastStatus){ apiStatus.innerHTML = t("apiLoading"); return; }
+      var u = lastStatus.tmdbOk ? t("tmdbNote") : "";
+      if(lastStatus.added>0){
+        apiDot.className = "dot live";
+        apiStatus.innerHTML = t("apiConnected").replace("{n}", bnNum(lastStatus.added)).replace("{s}", esc(lastStatus.srcs)).replace("{t}", bnNum(lastStatus.total)).replace("{u}", u);
+      } else {
+        apiDot.className = "dot err";
+        apiStatus.innerHTML = t("apiDown");
+      }
+      if(lastStatus.keyBad){ apiDot.className = "dot err"; apiStatus.innerHTML = t("apiKeyBad"); }
+    }
     function loadApis(manual){
       MOVIES = MOVIES.filter(function(m){ return !m.src; });
       tmdbTrending = []; tmdbNowPlaying = []; tmdbTrendingDay = []; tmdbUpcoming = []; tmdbPopular = []; tmdbTopRated = []; tmdbStatus = ""; cinemetaDone = false;
@@ -929,7 +1094,7 @@
       MOVIES.forEach(function(m){ byId[m.id]=m; });
       apiRefresh.disabled = true;
       apiDot.className = "dot";
-      apiStatus.innerHTML = "<b>লাইভ API</b> — ওপেন-সোর্স API থেকে মুভি আসছে…";
+      apiStatus.innerHTML = t("apiLoading");
       var known = {};
       MOVIES.forEach(function(m){ known[m.t.toLowerCase()] = 1; });
       var added = 0, okSrc = [];
@@ -949,8 +1114,8 @@
               pop:Math.max(40, Math.round((x.rating||7)*10)-14),
               yt:null, img:x.image_url || x.thumb_url || null,
               imdb:x.imdb_url || null,
-              src:"GitHub · theapache64/top250 (ওপেন-সোর্স)",
-              s:x.desc || "এই মুভির বিবরণ API-তে পাওয়া যায়নি।"
+              src:"GitHub · theapache64/top250 ("+t("openSrc")+")",
+              s:x.desc || t("apiNoDesc")
             });
             added++;
           });
@@ -966,12 +1131,12 @@
             MOVIES.push({
               id:id, t:x.title, y:parseInt(x.release_date,10)||0,
               r:Math.round((parseInt(x.rt_score,10)||80))/10,
-              dur:fmtMins(x.running_time), lang:"Japanese",
+              durMin:parseInt(x.running_time,10)||0, lang:"Japanese",
               g:["Anime","Fantasy"],
-              dir:x.director || "—", cast:"কণ্ঠশিল্পী — Studio Ghibli",
+              dir:x.director || "—", cast:t("ghibliCast"),
               pop:78, yt:null, img:x.image || null, anime:1,
-              src:"Ghibli API (ওপেন-সোর্স, GitHub)",
-              s:x.description || "Studio Ghibli-র অ্যানিমে ছবি।"
+              src:"Ghibli API ("+t("openSrc")+", GitHub)",
+              s:x.description || t("ghibliDesc")
             });
             added++;
           });
@@ -989,13 +1154,13 @@
               var yr = parseInt(String(x["Release Date"]||"").slice(-4), 10) || 0;
               MOVIES.push({
                 id:"apivg-"+i, t:title, y:yr, r:Math.round(x["IMDB Rating"]*10)/10,
-                dur:fmtMins(x["Running Time min"]), lang:"English",
+                durMin:parseInt(x["Running Time min"],10)||0, lang:"English",
                 g:[(x["Major Genre"] || "Drama")],
                 dir:x.Director || "—", cast:"—",
                 pop:Math.max(40, Math.round(x["IMDB Rating"]*10)-8),
                 yt:null, img:null,
-                src:"GitHub · vega/vega-datasets (ওপেন-সোর্স)",
-                s:"IMDB রেটিং "+x["IMDB Rating"]+" ("+bnNum(x["IMDB Votes"])+" ভোট) — Vega মুভি ডেটাসেট থেকে।"
+                src:"GitHub · vega/vega-datasets ("+t("openSrc")+")",
+                s:(LANG==="bn" ? "IMDB রেটিং "+x["IMDB Rating"]+" ("+bnNum(x["IMDB Votes"])+" ভোট) — Vega মুভি ডেটাসেট থেকে।" : "IMDb rating "+x["IMDB Rating"]+" ("+x["IMDB Votes"]+" votes) — from the Vega movie dataset.")
               });
               added++;
             });
@@ -1008,34 +1173,23 @@
         MOVIES.forEach(function(m){ byId[m.id]=m; });
         rebuildGenres();
         apiRefresh.disabled = false;
-        if(added>0){
-          apiLoaded = true;
-          apiDot.className = "dot live";
-          var tmdbNote = tmdbStatus==="ok" ? " • TMDB সংযুক্ত — প্রতিদিন নতুন মুভি আসছে" : "";
-          apiStatus.innerHTML = "<b>লাইভ API সংযুক্ত</b> — "+esc(okSrc.join(" + "))+" থেকে আরও <b>"+bnNum(added)+"টি</b> টাইটেল যোগ হয়েছে • মোট ক্যাটালগ "+bnNum(MOVIES.length)+"টি"+tmdbNote;
-          if(manual) toast("API রিফ্রেশ হয়েছে — মোট "+MOVIES.length+"টি টাইটেল");
-        } else {
-          apiDot.className = "dot err";
-          apiStatus.innerHTML = "<b>API পাওয়া যাচ্ছে না</b> — ইন্টারনেট সংযোগ চেক করুন; বিল্ট-ইন ক্যাটালগ চলছেই।";
-          if(manual) toast("API পাওয়া যায়নি — বিল্ট-ইন ক্যাটালগ চলছে");
-        }
-        if(tmdbKey() && tmdbStatus==="bad"){
-          apiDot.className = "dot err";
-          apiStatus.innerHTML = "<b>TMDB key কাজ করছে না</b> — সেটিংস (⚙️) থেকে key ঠিকমতো বসানো হয়েছে কিনা দেখুন; বাকি ক্যাটালগ চলছে।";
-        }
+        lastStatus = {added:added, srcs:okSrc.join(" + "), total:MOVIES.length, tmdbOk:tmdbStatus==="ok", keyBad:!!(tmdbKey() && tmdbStatus==="bad")};
+        if(added>0){ apiLoaded = true; if(manual) toast(t("apiRefreshed").replace("{n}", bnNum(MOVIES.length))); }
+        else if(manual){ toast(t("apiNotFound")); }
+        renderStatus();
         render();
         enrichCinemeta();
       });
     }
-    apiRefresh.addEventListener("click", function(){ toast("API আবার লোড হচ্ছে…"); loadApis(true); });
+    apiRefresh.addEventListener("click", function(){ toast(t("apiReloading")); loadApis(true); });
 
     /* ---------- settings: TMDB key (localStorage only, never sent anywhere) ---------- */
     var settingsScrim = document.getElementById("settingsScrim");
     var tmdbKeyInput = document.getElementById("tmdbKeyInput");
     var tmdbKeyStatus = document.getElementById("tmdbKeyStatus");
     function openSettings(){
-      tmdbKeyInput.value = tmdbKey();
-      tmdbKeyStatus.textContent = tmdbKey() ? "✓ TMDB key বসানো আছে" : "এখনো key বসানো হয়নি — key ছাড়া বিল্ট-ইন + ওপেন-সোর্স ক্যাটালগই চলবে।";
+      try{ tmdbKeyInput.value = localStorage.getItem(TMDB_KEY_LS) || ""; }catch(e){ tmdbKeyInput.value = ""; }
+      refreshKeyStatus();
       settingsScrim.classList.add("open");
       document.body.style.overflow = "hidden";
     }
@@ -1046,17 +1200,20 @@
     document.getElementById("settingsBtn").addEventListener("click", openSettings);
     settingsScrim.addEventListener("click", function(e){ if(e.target===settingsScrim) closeSettings(); });
     document.getElementById("settingsClose").addEventListener("click", closeSettings);
+    document.querySelectorAll("[data-uilang]").forEach(function(b){
+      b.addEventListener("click", function(){ setLang(b.getAttribute("data-uilang")); });
+    });
     document.getElementById("tmdbKeyClear").addEventListener("click", function(){
       try{ localStorage.removeItem(TMDB_KEY_LS); }catch(e){}
       tmdbKeyInput.value = "";
-      tmdbKeyStatus.textContent = "Key মুছে ফেলা হয়েছে — TMDB বন্ধ, বাকি ক্যাটালগ চলছে।";
-      toast("TMDB key মুছে ফেলা হয়েছে");
+      refreshKeyStatus();
+      toast(t("toastKeyRemoved"));
       loadApis(true);
     });
     document.getElementById("tmdbKeySave").addEventListener("click", function(){
       var k = tmdbKeyInput.value.trim();
-      if(!k){ tmdbKeyStatus.textContent = "Key খালি — আগে key পেস্ট করুন।"; return; }
-      tmdbKeyStatus.textContent = "Key যাচাই করা হচ্ছে…";
+      if(!k){ tmdbKeyStatus.textContent = t("keyStatusEmpty"); return; }
+      tmdbKeyStatus.textContent = t("keyStatusChecking");
       var isV4 = k.indexOf("eyJ")===0;
       var url = "https://api.themoviedb.org/3/trending/movie/week?language=en-US&page=1"
         + (isV4 ? "" : "&api_key="+encodeURIComponent(k));
@@ -1066,15 +1223,16 @@
         new Promise(function(_, rej){ setTimeout(function(){ rej(new Error("timeout")); }, 12000); })
       ]).then(function(){
         try{ localStorage.setItem(TMDB_KEY_LS, k); }catch(e){}
-        tmdbKeyStatus.textContent = "✓ TMDB সংযুক্ত — প্রতিদিন নতুন মুভি আসবে।";
-        toast("TMDB সংযুক্ত হয়েছে");
+        tmdbKeyStatus.textContent = t("keyStatusSaved");
+        toast(t("toastConnected"));
         closeSettings();
         loadApis(true);
       }).catch(function(){
-        tmdbKeyStatus.textContent = "✕ Key কাজ করছে না — v4 Read Access Token বা v3 API Key ঠিকমতো কপি হয়েছে কিনা দেখুন।";
+        tmdbKeyStatus.textContent = t("keyStatusBad");
       });
     });
 
+    applyI18n();
     render();
     loadApis(false);
     </script>
