@@ -781,6 +781,7 @@
     function loadTmdb(known){
       var key = tmdbKey();
       if(!key) return Promise.resolve(0);
+      var added = 0;
       function addTo(list, results, popBase){
         (results || []).slice(0,20).forEach(function(x, i){
           var title = (x.title||"").toLowerCase();
@@ -800,7 +801,7 @@
         var t = res[0], n = res[1];
         if(!t && !n && !res[2] && !res[3] && !res[4] && !res[5]){ tmdbStatus = "bad"; return 0; }
         tmdbStatus = "ok";
-        var added = 0;
+        added = 0;
         tmdbTrending = []; tmdbNowPlaying = []; tmdbTrendingDay = []; tmdbUpcoming = []; tmdbPopular = []; tmdbTopRated = [];
         addTo(tmdbTrending, t && t.results, 99);
         addTo(tmdbNowPlaying, n && n.results, 88);
